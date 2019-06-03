@@ -1,0 +1,2 @@
+const db = require('../index');
+

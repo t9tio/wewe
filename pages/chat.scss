@@ -1,0 +1,40 @@
+$green: #86BB71;
+$blue: #94C2ED;
+$orange: #E38968;
+$gray: #92959E;
+
+.msg-container {
+  min-height: 70vh;
+}
+
+.chat-sidebar {
+  // color: white;
+  // background-color: $gray;
+}
+
+.chat-section {
+  background: #6baee6;
+  .chat-container {
+    margin: 2rem 4vw 1rem 4vw;
+  }
+}
+
+.msg-container {
+  background-color: #eee;
+  border-radius: 3px;
+}
+
+.chat-sidebar {
+  background: #444753;
+  border-radius: 3px;
+  p {
+    color: white;
+  }
+}
+
+.chat-head-title {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  // color: white;
+  // margin-left: 4vw;
+  // padding: 0;
+}
