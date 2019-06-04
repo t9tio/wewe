@@ -22,6 +22,7 @@
   "homepage": "https://github.com/t9tio/wewe#readme",
   "dependencies": {
     "aws": "0.0.3-2",
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "bulma": "^0.7.5",
     "cors": "^2.8.5",
