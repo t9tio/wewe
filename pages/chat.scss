@@ -3,23 +3,37 @@ $blue: #94C2ED;
 $orange: #E38968;
 $gray: #92959E;
 
-.msg-container {
-  min-height: 70vh;
-}
+// .date-picker-container {
+//   position: relative;
+//   width: 100%;
+//   padding: 1em 1em 2em 0;
+//   .date-picker {
+//     position: absolute;
+//     right: 0;
+//   }
+// }
 
-.chat-sidebar {
-  // color: white;
-  // background-color: $gray;
+.pagination {
+  padding: 35px 5px 10px 5px;
 }
 
 .chat-section {
-  background: #6baee6;
-  .chat-container {
-    margin: 2rem 4vw 1rem 4vw;
-  }
+  padding-top: 0;
 }
 
+.msg-section {
+  background: #efefef;
+  padding: 15px;
+  border-radius: 4px;
+  // height: 85vh;
+  overflow-y: scroll;
+}
+
+.chat-title {
+  background: #fff;
+}
 .msg-container {
+  min-height: 70vh;
   background-color: #eee;
   border-radius: 3px;
 }
@@ -34,7 +48,4 @@ $gray: #92959E;
 
 .chat-head-title {
   font-family: "Comic Sans MS", cursive, sans-serif;
-  // color: white;
-  // margin-left: 4vw;
-  // padding: 0;
 }

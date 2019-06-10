@@ -4,13 +4,16 @@ import './Msg.scss';
 const Msg = ({
   id, text, from, date,
 }) => (
-  <div className="content">
-    <span>
+  <div className="">
+    <span className="msg-from">
       {from}
       {' '}
+      &nbsp;
+      <a className="msg-from-time">
+        <small>{dayjs((Number(date))).format('HH:mm A')}</small>
+      </a>
     </span>
-    &nbsp;
-    <a><small>{dayjs((Number(date))).format('HH:mm A')}</small></a>
+
     <br />
 
     <p className="chat-message">

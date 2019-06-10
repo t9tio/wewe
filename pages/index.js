@@ -1,5 +1,6 @@
 import './index.scss';
 import Head from './components/Head';
+import Nav from './components/Nav';
 import Footer from './components/Footer';
 import ChatCards from './components/ChatCards';
 
@@ -13,6 +14,7 @@ class Index extends React.Component {
     return (
       <div>
         <Head />
+        <Nav />
         <div className="chat-list-section">
           <div id="flow">
             <span className="flow-1" />

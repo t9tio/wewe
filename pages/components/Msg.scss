@@ -3,28 +3,40 @@ $blue: #94C2ED;
 $orange: #E38968;
 $gray: #92959E;
 
+.msg-from {
+  font-size: 13px;
+  color: #888;
+  .msg-from-time {
+    color: #94C2ED;
+  }
+}
+
 .chat-message {
   // color: white;
-  padding: 18px 20px;
-  line-height: 26px;
-  font-size: 16px;
+  display: inline-block;
+  padding: 8px 10px;
+  margin: 5px 10px 10px 10px;
+  // line-height: 26px;
+  font-size: 15px;
   border-radius: 5px;
-  margin-top: 15px;
-  width: 90%;
+  // margin-top: 15px;
+  // margin-left: 10px;
+  // width: 90%;
   position: relative;
-  background-color: white;
+  background-color: #fff;
+  word-break: break-all;
 
-  &:after {
-    bottom: 100%;
-    left: 5%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-bottom-color: white;
-    border-width: 10px;
-    margin-left: -10px;
-  }
+  // &:after {
+  //   bottom: 100%;
+  //   left: 5%;
+  //   border: solid transparent;
+  //   content: " ";
+  //   height: 0;
+  //   width: 0;
+  //   position: absolute;
+  //   pointer-events: none;
+  //   border-bottom-color: rgb(192, 188, 188);
+  //   border-width: 10px;
+  //   margin-left: -10px;
+  // }
 }

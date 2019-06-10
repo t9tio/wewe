@@ -1,3 +1,12 @@
 // .navbar, .navbar-menu, .navbar-link, .navbar-item, .navbar-divider, .navbar-dropdown, .navbar-item {
 //   background-color: #77bbf4;
 // }
+
+.nav-input {
+  background-color : #2e2d2d;
+  color: white;
+  border-color: #2e2d2d;
+  &::placeholder {
+    color: #666;
+  }
+}

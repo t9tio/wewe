@@ -1,6 +1,5 @@
 const knex = require('./knex');
 
-
 const getGroups = () => knex('groups').select('*');
 
 const getGroupById = async (id) => {
@@ -13,7 +12,6 @@ const getGroupIdByGroupName = async (groupName) => {
   if (groups[0]) return groups[0].id;
   return null;
 };
-
 
 const insertMsg = async ({
   groupId, groupName, text, from, date,
