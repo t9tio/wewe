@@ -5,6 +5,7 @@ const config = {
     client: 'sqlite3',
     dbFilePath: path.join(__dirname, '../db.sqlite'),
   },
+  pageMsgCount: 30,
 };
 
 module.exports = config;

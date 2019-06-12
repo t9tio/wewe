@@ -1,16 +1,16 @@
 const ChatCard = ({
-  id, name, logoUrl, description, userCount, type,
+  name, logoUrl, description, userCount, type,
 }) => (
   <div className="box group-box">
     <article className="media">
       <div className="media-left">
         <figure className="image is-64x64">
-          <img src={logoUrl} alt="logo" />
+          <a href={`/chat/${name}`}><img src={logoUrl} alt="logo" /></a>
         </figure>
       </div>
       <div className="media-content">
         <div className="content">
-          <a href={`/chat/${id}`}><strong>{name}</strong></a>
+          <a href={`/chat/${name}`}><strong>{name}</strong></a>
           <p>
             {description}
           </p>

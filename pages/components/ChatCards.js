@@ -9,7 +9,6 @@ const ChatCards = ({ groups }) => {
         threeChats.map(group => (
           <div className="column is-4">
             <ChatCard
-              id={group.id}
               name={group.name}
               description={group.description}
               logoUrl={group.logoUrl}

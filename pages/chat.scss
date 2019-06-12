@@ -13,8 +13,18 @@ $gray: #92959E;
 //   }
 // }
 
-.pagination {
-  padding: 35px 5px 10px 5px;
+// .pagination {
+//   padding: 35px 5px 10px 5px;
+// }
+
+.paginate-container {
+  list-style-type: none;
+  padding: 25px 5px 10px 5px;
+  overflow: hidden;
+  li {
+    float: left;
+    padding: 0 2px;
+  }
 }
 
 .chat-section {
@@ -27,6 +37,8 @@ $gray: #92959E;
   border-radius: 4px;
   // height: 85vh;
   overflow-y: scroll;
+  display: block;
+  min-height: 30vh;
 }
 
 .chat-title {
