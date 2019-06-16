@@ -9,7 +9,7 @@
     "sb": "nodemon backend/index.js --watch backend/",
     "sw": "node bots/wechat/index.js",
     "initDb": "node db/initDb.js",
-    "deploy": "npm run build && npm prune --production && up deploy production && npm i --offline"
+    "deploy": "npm run build && npm prune --production && up deploy production --no-build && npm i --offline"
   },
   "repository": {
     "type": "git",
