@@ -1,8 +1,8 @@
-import './index.scss';
 import Head from './components/Head';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import ChatCards from './components/ChatCards';
+import './index.scss';
 
 class Index extends React.Component {
   static async getInitialProps({ query: { groups } }) {
@@ -26,12 +26,12 @@ class Index extends React.Component {
             <h2 className="subtitle has-text-white">
               Open group chat to the world
             </h2>
-            <a href="https://github.com/t9tio/wewe">
-              <img alt="GitHub stars" src="https://img.shields.io/github/stars/t9tio/wewe.svg?style=social" />
+            <a href="/join">
+              <img alt="Add group" src="https://img.shields.io/badge/Join-3-lightgrey.svg?style=social&&logo=stack-exchange&&logoColor=black" />
             </a>
             &nbsp; &nbsp;
-            <a href="/join">
-              <img alt="Add group" src="https://img.shields.io/badge/Join-3-lightgrey.svg?style=social" />
+            <a href="https://github.com/t9tio/wewe">
+              <img alt="GitHub stars" src="https://img.shields.io/github/stars/t9tio/wewe.svg?style=social" />
             </a>
           </div>
 

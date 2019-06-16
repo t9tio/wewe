@@ -1,3 +1,14 @@
+.head-title {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: white;
+}
+
+.chat-list-section {
+  min-height: 80vh;
+  background: #041221;
+  overflow: hidden;
+}
+
 ///////// flow
 #flow {
   position: relative;
@@ -44,12 +55,3 @@
 
 ///////////////////
 
-.head-title {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  color: white;
-}
-
-.chat-list-section {
-  min-height: 80vh;
-  background: #041221;
-}

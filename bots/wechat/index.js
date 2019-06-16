@@ -1,6 +1,7 @@
 const { Wechaty } = require('wechaty');
 const qrcodeTerminal = require('qrcode-terminal');
-const db = require('../../db');
+const MsgDao = require('../../db/Msg');
+const config = require('../../config');
 
 const bot = Wechaty.instance();
 
@@ -24,12 +25,12 @@ bot.on('message', async (message) => {
     const from = await message.from().name();
     const date = await message.date();
 
-    const groupId = await db.getGroupIdByGroupName(groupName);
+    if (config.knownGroups.includes(groupName)) {
+      await MsgDao.addMsgOfGroup({
+        groupName, text, from, date,
+      });
+      console.log('msg saved to db', groupName, text, from, date);
+    }
 
-    await db.insertMsg({
-      groupId, groupName, text, from, date,
-    });
-
-    console.log('msg saved to db', groupId, groupName, text, from, date);
   }
 });

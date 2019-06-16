@@ -32,11 +32,18 @@ class Index extends React.Component {
             <div className="columns">
               <div className="column is-four-fifths ">
                 <div className="">
-                  <p className="title is-5">{group.name}</p>
+                  <p className="title is-5">
+                    <a href={`/chat/${group.name}`}>
+                      <i className="fab fa-weixin has-text-success" />
+                      &nbsp;
+                      {group.name}
+                    </a>
+                  </p>
                   <p className="subtitle is-6">{group.description}</p>
                   <div className="tabs">
                     <ul>
                       <li className="is-active"><a>Messages</a></li>
+                      <li><a>Live</a></li>
                       <li><a>Members</a></li>
                       <li><a>Topics</a></li>
                       <li><a>Statistics</a></li>
@@ -44,47 +51,47 @@ class Index extends React.Component {
                   </div>
                 </div>
 
-                <ReactPaginate
-                  pageCount={totalPageCount}
-                  initialPage={currentPage - 1}
-                  marginPagesDisplayed={1}
-                  pageRangeDisplayed={4}
-                  previousLabel="←"
-                  nextLabel="→"
-                  containerClassName="paginate-container"
-                  pageLinkClassName="button is-small"
-                  previousLinkClassName="button is-small"
-                  nextLinkClassName="button is-small"
-                  breakLinkClassName="button is-small is-white"
-                  disabledLinkClassName="button is-small disabled"
-                  activeLinkClassName="is-dark active-link-mark"
-                  hrefBuilder={num => `./${num}`}
-                  // to enable redirect
-                  // ref: https://github.com/AdeleD/react-paginate/issues/213
-                  onPageChange={({ selected }) => {
-                    if (selected !== currentPage - 1) {
-                      setTimeout(() => {
-                        document.querySelector('.active-link-mark').classList.remove('is-dark');
-                        document.querySelector('.active-link-mark').classList.add('is-loading');
-                        window.location = `/chat/${group.name}/page/${selected + 1}`;
-                      }, 0);
-                    }
-                  }}
-                />
 
                 <div className="msg-section">
-
-                  {
-                    msgs.map(msg => (
-                      <Msg
-                        id={msg.id}
-                        text={msg.text}
-                        from={msg.from}
-                        date={msg.date}
-                      />
-                    ))
-                  }
-
+                  <ReactPaginate
+                    pageCount={totalPageCount}
+                    initialPage={currentPage - 1}
+                    marginPagesDisplayed={1}
+                    pageRangeDisplayed={4}
+                    previousLabel="←"
+                    nextLabel="→"
+                    containerClassName="paginate-container"
+                    pageLinkClassName="button is-white is-small"
+                    previousLinkClassName="button is-white is-small"
+                    nextLinkClassName="button is-white is-small"
+                    breakLinkClassName="button is-white is-small"
+                    disabledLinkClassName="button is-white is-small disabled"
+                    activeLinkClassName="is-dark active-link-mark"
+                    hrefBuilder={num => `./${num}`}
+                    // to enable redirect
+                    // ref: https://github.com/AdeleD/react-paginate/issues/213
+                    onPageChange={({ selected }) => {
+                      if (selected !== currentPage - 1) {
+                        setTimeout(() => {
+                          document.querySelector('.active-link-mark').classList.remove('is-dark');
+                          document.querySelector('.active-link-mark').classList.add('is-loading');
+                          window.location = `/chat/${group.name}/page/${selected + 1}`;
+                        }, 0);
+                      }
+                    }}
+                  />
+                  <div className="msg-container">
+                    {
+                      msgs.map(msg => (
+                        <Msg
+                          id={msg.id}
+                          text={msg.text}
+                          from={msg.from}
+                          date={msg.date}
+                        />
+                      ))
+                    }
+                  </div>
                 </div>
                 <br />
 
@@ -92,13 +99,18 @@ class Index extends React.Component {
               <div className="column">
                 <div className="card">
                   <div className="card-image">
-                    <figure className="image is-4by3">
-                      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder" />
-                    </figure>
+                    <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi">
+                      <figure className="image">
+                        <img src="https://raw.githubusercontent.com/timqian/images/master/tomatopie-header.gif" alt="Placeholder" />
+                      </figure>
+                    </a>
                   </div>
                   <div className="content has-text-centered">
-                    <a className="has-text-grey" href="/advertise">ads</a>
+                    <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi"><strong>tomato-pie</strong></a>
+                    <br />
+                    <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi">manage your time with ease</a>
                   </div>
+                  <a className="chat-ads-card" href="/advertise"><small>Ad</small></a>
                 </div>
               </div>
 

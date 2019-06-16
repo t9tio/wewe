@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const next = require('next');
-const Group = require('../ddb/Group');
-const Msg = require('../ddb/Msg');
+const Group = require('../db/Group');
+const Msg = require('../db/Msg');
 const { pageMsgCount } = require('../config');
 
 const dev = process.env.NODE_ENV !== 'production';

@@ -1,5 +1,8 @@
+import './ChatCard.scss';
+import { abbreviateNumber } from '../utils';
+
 const ChatCard = ({
-  name, logoUrl, description, userCount, type,
+  name, logoUrl, description, userCount, type, msgCount,
 }) => (
   <div className="box group-box">
     <article className="media">
@@ -15,23 +18,28 @@ const ChatCard = ({
             {description}
           </p>
         </div>
-        <nav className="level is-mobile">
+        <nav className="chatcard-status-nav level is-mobile">
           <div className="level-left">
-            <a className="level-item" aria-label="reply">
-              <span className="icon is-small">
-                <i className="fas fa-reply" aria-hidden="true" />
+
+            <div className="level-item chatcard-member-count" aria-label="members">
+              <span className="icon">
+                <i className="fas fa-comment" />
               </span>
-            </a>
-            <a className="level-item" aria-label="retweet">
-              <span className="icon is-small">
-                <i className="fas fa-retweet" aria-hidden="true" />
+              {abbreviateNumber(msgCount)}
+            </div>
+
+            <div className="level-item chatcard-member-count" aria-label="members">
+              <span className="icon">
+                <i className="fas fa-user-alt" />
               </span>
-            </a>
-            <a className="level-item" aria-label="like">
-              <span className="icon is-small">
-                <i className="fas fa-heart" aria-hidden="true" />
+              {userCount}
+            </div>
+            <div className="level-item chatcard-member-count" aria-label="type">
+              <span className="icon">
+                <i className="fab fa-weixin" />
               </span>
-            </a>
+              {type}
+            </div>
           </div>
         </nav>
       </div>

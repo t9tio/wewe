@@ -1,7 +1,6 @@
 const Group = require('./Group');
 const Msg = require('./Msg');
 
-
 async function initDb() {
   // init groups
   await Group.put({
@@ -9,6 +8,8 @@ async function initDb() {
     description: 'Building wewe together',
     logoUrl: 'https://user-images.githubusercontent.com/5512552/58616555-87959580-82f0-11e9-8ac4-4045463f2f41.png',
     type: 'wechat',
+    userCount: 3,
+    msgCount: 0,
   });
 
   await Group.put({
@@ -16,6 +17,8 @@ async function initDb() {
     description: 'Building transparent products together',
     logoUrl: 'https://raw.githubusercontent.com/timqian/images/master/font.png',
     type: 'wechat',
+    userCount: 199,
+    msgCount: 0,
   });
 
   await Group.put({
@@ -23,6 +26,8 @@ async function initDb() {
     description: 'GraphQL 中文交流群',
     logoUrl: 'https://raw.githubusercontent.com/timqian/images/master/font-graphql.png',
     type: 'wechat',
+    userCount: 99,
+    msgCount: 0,
   });
 
   const item = await Group.get({
@@ -42,7 +47,7 @@ async function initDb() {
     date: new Date().getTime(),
   });
 
-  for (let i = 0; i < 140; i++) {
+  for (let i = 0; i < 145; i++) {
     await Msg.addMsgOfGroup({
       groupName: 'wewe',
       text: `test ${i} from initTablesData.js`,

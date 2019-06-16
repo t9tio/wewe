@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-const secret = require('../../secret.json');
+const secret = require('../secret.json');
 
 
 const awsConfig = {

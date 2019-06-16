@@ -7,13 +7,14 @@ const ChatCards = ({ groups }) => {
     <div className="columns">
       {
         threeChats.map(group => (
-          <div className="column is-4">
+          <div className="column is-4 is-flex">
             <ChatCard
               name={group.name}
               description={group.description}
               logoUrl={group.logoUrl}
               userCount={group.userCount}
               type={group.type}
+              msgCount={group.msgCount}
             />
           </div>
         ))

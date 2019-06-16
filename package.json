@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "next build",
-    "start": "NODE_ENV=production node src/backend/index.js",
-    "sb": "nodemon src/backend/index.js --watch backend/",
-    "sw": "node src/bots/wechat/index.js",
-    "initDb": "node src/db/initDb.js"
+    "start": "NODE_ENV=production node backend/index.js",
+    "sb": "nodemon backend/index.js --watch backend/",
+    "sw": "node bots/wechat/index.js",
+    "initDb": "node db/initDb.js",
+    "deploy": "npm run build && npm prune --production && up deploy production && npm i --offline"
   },
   "repository": {
     "type": "git",
@@ -43,10 +44,7 @@
     "react-dom": "^16.8.6",
     "react-ga": "^2.5.7",
     "react-paginate": "^6.3.0",
-    "sqlite3": "^4.0.8",
-    "wechat4u": "^0.7.7",
-    "wechaty": "^0.26.1",
-    "wechaty-puppet-puppeteer": "^0.16.1"
+    "sqlite3": "^4.0.8"
   },
   "devDependencies": {
     "@zeit/next-css": "^1.0.1",
