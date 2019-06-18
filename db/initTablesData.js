@@ -17,14 +17,15 @@ async function initDb() {
     description: 'Building transparent products together',
     logoUrl: 'https://raw.githubusercontent.com/timqian/images/master/font.png',
     type: 'wechat',
-    userCount: 199,
+    userCount: 492,
     msgCount: 0,
   });
 
   await Group.put({
-    name: 'GraphQL 交流',
-    description: 'GraphQL 中文交流群',
-    logoUrl: 'https://raw.githubusercontent.com/timqian/images/master/font-graphql.png',
+    name: 't9t.io community 2',
+    description: 'Building transparent products together',
+    // logoUrl: 'https://raw.githubusercontent.com/timqian/images/master/font-graphql.png',
+    logoUrl: 'https://raw.githubusercontent.com/timqian/images/master/font.png',
     type: 'wechat',
     userCount: 99,
     msgCount: 0,
@@ -51,7 +52,7 @@ async function initDb() {
     await Msg.addMsgOfGroup({
       groupName: 'wewe',
       text: `test ${i} from initTablesData.js`,
-      from: 'timqian' + i,
+      from: `timqian${i}`,
       date: new Date().getTime(),
     });
   }

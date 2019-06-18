@@ -13,7 +13,7 @@ class Index extends React.Component {
     const { groups } = this.props;
     return (
       <div>
-        <Head />
+        <Head title="wewe" description="open group chat to the world" />
         <Nav />
         <div className="chat-list-section">
           <div id="flow">

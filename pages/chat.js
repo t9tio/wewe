@@ -23,7 +23,7 @@ class Index extends React.Component {
 
     return (
       <div>
-        <Head />
+        <Head title={group.name} description={group.description} />
         <Nav />
         <div className="chat-section section">
           <br />
@@ -42,8 +42,9 @@ class Index extends React.Component {
                   <p className="subtitle is-6">{group.description}</p>
                   <div className="tabs">
                     <ul>
-                      <li className="is-active"><a>Messages</a></li>
+                      <li className="is-active"><a href={`/chat/${group.name}`}>Messages</a></li>
                       <li><a>Live</a></li>
+                      <li><a>Events</a></li>
                       <li><a>Members</a></li>
                       <li><a>Topics</a></li>
                       <li><a>Statistics</a></li>
@@ -88,6 +89,8 @@ class Index extends React.Component {
                           text={msg.text}
                           from={msg.from}
                           date={msg.date}
+                          link={msg.link}
+                          type={msg.type}
                         />
                       ))
                     }
@@ -97,7 +100,7 @@ class Index extends React.Component {
 
               </div>
               <div className="column">
-                <div className="card">
+                <div className="card ad-card">
                   <div className="card-image">
                     <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi">
                       <figure className="image">
@@ -108,7 +111,7 @@ class Index extends React.Component {
                   <div className="content has-text-centered">
                     <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi"><strong>tomato-pie</strong></a>
                     <br />
-                    <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi">manage your time with ease</a>
+                    <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi">Peek into your working status with ease.</a>
                   </div>
                   <a className="chat-ads-card" href="/advertise"><small>Ad</small></a>
                 </div>

@@ -2,6 +2,7 @@ const { Wechaty } = require('wechaty');
 const qrcodeTerminal = require('qrcode-terminal');
 const MsgDao = require('../../db/Msg');
 const config = require('../../config');
+const s3 = require('../services/s3');
 
 const bot = Wechaty.instance();
 
@@ -17,20 +18,46 @@ bot.on('scan', (url, status) => {
 bot.on('login', user => console.log(`User ${user} logined`));
 
 bot.on('message', async (message) => {
-  console.log(`Message: ${message}`);
-  const room = await message.room();
-  if (room) {
-    const groupName = await room.topic();
-    const text = await message.text();
-    const from = await message.from().name();
-    const date = await message.date();
+  try {
+  // console.log(`Message: ${message}`);
+    const room = await message.room();
 
-    if (config.knownGroups.includes(groupName)) {
-      await MsgDao.addMsgOfGroup({
-        groupName, text, from, date,
-      });
-      console.log('msg saved to db', groupName, text, from, date);
+    if (room) {
+      const groupName = await room.topic();
+
+      if (config.knownGroups.includes(groupName)) {
+        const from = await message.from().name();
+        const rawDate = await message.date();
+        const date = new Date(rawDate).getTime();
+        // MessageType.Unknown
+        // MessageType.Attachment
+        // MessageType.Audio
+        // MessageType.Contact
+        // MessageType.Emoticon
+        // MessageType.Image
+        // MessageType.Text
+        // MessageType.Video
+        // MessageType.Url
+        const type = await message.type();
+        if (type === bot.Message.Type.Audio || type === bot.Message.Type.Video || type === bot.Message.Type.Image) {
+          const filebox = await message.toFileBox();
+          const filename = filebox.name;
+          const fileStream = await filebox.toBuffer();
+          const link = await s3.uploadToS3AndGetUrl(fileStream, groupName, filename);
+          await MsgDao.addMsgOfGroup({
+            groupName, from, date, type, link,
+          });
+          console.log('msg saved to db', groupName, from, date, type, link);
+        } else {
+          const text = await message.text();
+          await MsgDao.addMsgOfGroup({
+            groupName, text, from, date, type,
+          });
+          console.log('msg saved to db', groupName, text, from, date, type);
+        }
+      }
     }
-
+  } catch (e) {
+    console.error(e);
   }
 });

@@ -39,4 +39,16 @@ $gray: #92959E;
   //   border-width: 10px;
   //   margin-left: -10px;
   // }
+
+
+}
+
+.chat-msg-img {
+  img {
+    max-width: 20rem;
+    max-height: 10rem;
+  }
+  // padding: 8px 10px;
+  margin: 5px 10px 10px 10px;
+  overflow: hidden;
 }

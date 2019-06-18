@@ -48,7 +48,7 @@ async function getAll() {
   const { Items } = await docClient.scan({
     TableName: 'wewe-group',
   }).promise();
-  return Items;
+  return Items.reverse();
 }
 
 async function put({

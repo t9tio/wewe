@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "start": "NODE_ENV=production node backend/index.js",
-    "sb": "nodemon backend/index.js --watch backend/",
+    "sb": "nodemon backend/index.js --watch backend/ --watch config.js",
     "sw": "node bots/wechat/index.js",
     "initDb": "node db/initDb.js",
     "deploy": "npm run build && npm prune --production && up deploy production --no-build && npm i --offline"
@@ -33,6 +33,7 @@
     "dayjs": "^1.8.14",
     "express": "^4.17.1",
     "lodash.chunk": "^4.2.0",
+    "nanoid": "^2.0.3",
     "next": "^8.1.0",
     "node-sass": "^4.12.0",
     "qrcode-terminal": "^0.12.0",

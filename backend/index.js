@@ -65,6 +65,10 @@ nextApp.prepare().then(() => {
     });
   });
 
+  app.get('/join', async (req, res) => {
+    nextApp.render(req, res, '/join');
+  });
+
   app.get('*', (req, res) => handle(req, res));
 
   const { PORT = 8080 } = process.env;

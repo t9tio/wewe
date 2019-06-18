@@ -13,4 +13,7 @@ npm run sb
 
 # start wechat bot
 npm run sw
+
+# deploy the website
+npm run deploy
 ```
