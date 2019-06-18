@@ -9,6 +9,7 @@ const Msg = ({
     const fixedText = text
       .replace(/<a.*?>/gi, '')
       .replace(/<\/a>/gi, '')
+      .replace(/<br\/>/gi, '\n')
       // TODO: better emoji support
       .replace(/<img class="qqemoji.*?\/>/gi, '[emoji]')
       .replace(/<img class="emoji.*?\/>/gi, '[emoji]');

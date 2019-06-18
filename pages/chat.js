@@ -95,6 +95,33 @@ class Index extends React.Component {
                       ))
                     }
                   </div>
+                  <ReactPaginate
+                    pageCount={totalPageCount}
+                    initialPage={currentPage - 1}
+                    marginPagesDisplayed={1}
+                    pageRangeDisplayed={4}
+                    previousLabel="←"
+                    nextLabel="→"
+                    containerClassName="paginate-container"
+                    pageLinkClassName="button is-white is-small"
+                    previousLinkClassName="button is-white is-small"
+                    nextLinkClassName="button is-white is-small"
+                    breakLinkClassName="button is-white is-small"
+                    disabledLinkClassName="button is-white is-small disabled"
+                    activeLinkClassName="is-dark active-link-mark-2"
+                    hrefBuilder={num => `./${num}`}
+                    // to enable redirect
+                    // ref: https://github.com/AdeleD/react-paginate/issues/213
+                    onPageChange={({ selected }) => {
+                      if (selected !== currentPage - 1) {
+                        setTimeout(() => {
+                          document.querySelector('.active-link-mark-2').classList.remove('is-dark');
+                          document.querySelector('.active-link-mark-2').classList.add('is-loading');
+                          window.location = `/chat/${group.name}/page/${selected + 1}`;
+                        }, 0);
+                      }
+                    }}
+                  />
                 </div>
                 <br />
 
