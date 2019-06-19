@@ -71,7 +71,7 @@ class Index extends React.Component {
                     breakLinkClassName="button is-white is-small"
                     disabledLinkClassName="button is-white is-small disabled"
                     activeLinkClassName="is-dark active-link-mark"
-                    hrefBuilder={num => `./${num}`}
+                    hrefBuilder={num => `/chat/${group.name}/page/${num}`}
                     // to enable redirect
                     // ref: https://github.com/AdeleD/react-paginate/issues/213
                     onPageChange={({ selected }) => {
@@ -114,7 +114,7 @@ class Index extends React.Component {
                     breakLinkClassName="button is-white is-small"
                     disabledLinkClassName="button is-white is-small disabled"
                     activeLinkClassName="is-dark active-link-mark-2"
-                    hrefBuilder={num => `./${num}`}
+                    hrefBuilder={num => `/chat/${group.name}/page/${num}`}
                     // to enable redirect
                     // ref: https://github.com/AdeleD/react-paginate/issues/213
                     onPageChange={({ selected }) => {
