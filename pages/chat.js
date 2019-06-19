@@ -39,7 +39,10 @@ class Index extends React.Component {
                       {group.name}
                     </a>
                   </p>
-                  <p className="subtitle is-6">{group.description}</p>
+                  <p className="subtitle is-6">{group.description} &nbsp;
+                  <a className="tag is-small is-success">I'm a member of this group</a>
+                  </p>
+                  
                   <div className="tabs">
                     <ul>
                       <li className="is-active"><a href={`/chat/${group.name}`}>Messages</a></li>
@@ -91,6 +94,8 @@ class Index extends React.Component {
                           date={msg.date}
                           link={msg.link}
                           type={msg.type}
+                          isKnownMember={msg.isKnownMember}
+                          groupName={group.name}
                         />
                       ))
                     }

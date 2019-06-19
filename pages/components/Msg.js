@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import './Msg.scss';
 
 const Msg = ({
-  id, text, from, date, link, type,
+  id, text, from, date, link, type, isKnownMember, groupName,
 }) => {
   let msgDiv;
   if (type === 7 && text) {
@@ -31,9 +31,12 @@ const Msg = ({
   return (
     <div className="">
       <span className="msg-from">
-        {from}
-        {' '}
-    &nbsp;
+        {
+          isKnownMember
+            ? <a href={`/chat/${groupName}/member/${from}`}><strong>{from}</strong></a>
+            : from
+        }
+        &nbsp;
         <a className="msg-from-time">
           <small>{dayjs((Number(date))).format('HH:mm A')}</small>
         </a>

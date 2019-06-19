@@ -2,8 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const next = require('next');
+
 const Group = require('../db/Group');
 const Msg = require('../db/Msg');
+const GroupMember = require('../db/GroupMember');
 const { pageMsgCount } = require('../config');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -34,11 +36,25 @@ nextApp.prepare().then(() => {
 
     const totalPageCount = Math.ceil(group.msgCount / pageMsgCount);
     console.log(totalPageCount);
-    const msgs = await Msg.getRange({
+    let msgs = await Msg.getRange({
       groupName: name,
       idOffset: (totalPageCount - 1) * pageMsgCount,
       idLimit: pageMsgCount,
     });
+
+    // potential bug: more than 100 member of a group
+    const members = await GroupMember.getAllMemberNames({
+      groupName: name,
+    });
+
+    // console.log(members);
+    msgs = msgs.map((msg) => {
+      if (members.includes(msg.from)) {
+        msg.isKnownMember = true;
+      }
+      return msg;
+    });
+
     nextApp.render(req, res, '/chat', {
       group, msgs, totalPageCount, currentPage: totalPageCount,
     });
@@ -54,15 +70,43 @@ nextApp.prepare().then(() => {
 
     const totalPageCount = Math.ceil(group.msgCount / pageMsgCount);
 
-    const msgs = await Msg.getRange({
+    let msgs = await Msg.getRange({
       groupName: name,
       idOffset: (page - 1) * pageMsgCount,
       idLimit: pageMsgCount,
     });
 
+    // potential bug: more than 100 member of a group
+    const members = await GroupMember.getAllMemberNames({
+      groupName: name,
+    });
+
+    // console.log(members);
+    msgs = msgs.map((msg) => {
+      if (members.includes(msg.from)) {
+        msg.isKnownMember = true;
+      }
+      return msg;
+    });
+
+    console.log(msgs);
     nextApp.render(req, res, '/chat', {
       group, msgs, totalPageCount, currentPage: page,
     });
+  });
+
+  app.get('/chat/:groupname/member/:username', async (req, res) => {
+    const { groupname, username } = req.params;
+    const groupMember = await GroupMember.get({ groupName: groupname, name: username });
+    if (!groupMember) {
+      res.status(404);
+      return;
+    }
+
+    res.json(groupMember);
+    // nextApp.render(req, res, '/chat', {
+    //   group, msgs, totalPageCount, currentPage: page,
+    // });
   });
 
   app.get('/join', async (req, res) => {

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "start": "NODE_ENV=production node backend/index.js",
-    "sb": "nodemon backend/index.js --watch backend/ --watch config.js",
+    "sb": "nodemon backend/index.js --watch backend/ --watch config.js --watch db/",
     "sw": "node bots/wechat/index.js",
     "initDb": "node db/initDb.js",
     "deploy": "npm run build && npm prune --production && up deploy production --no-build && npm i --offline"
