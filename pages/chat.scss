@@ -20,20 +20,22 @@
   border-radius: 5px;
   position: relative;
   // box-shadow: 2px 2px 3px rgba(10, 10, 10, 0.1);
+  background: #f7f7f7;
   border: 1px solid #d1d5da;
 }
 
 .paginate-container {
   list-style-type: none;
   padding: 10px;
-  border-bottom: 1px solid rgb(214, 214, 214);
-  border-radius: 5px 5px 0 0;
+  // border-bottom: 1px solid rgb(214, 214, 214);
+  // border-radius: 5px 5px 0 0;
+  border-radius: 5px;
   background: #f1f1f1;
   overflow: hidden;
   // height: 3em;
   z-index: 10;
-  position: -webkit-sticky;
-  position: sticky;
+  // position: -webkit-sticky;
+  // position: sticky;
   top: 0;
   display: block;
   // box-shadow: 0px 2px gray;
@@ -45,8 +47,9 @@
 
 .msg-container {
   padding: 10px;
-  background: #f7f7f7;
-  border-radius:  0 0 5px 5px;
+  border-bottom: 1px solid rgb(214, 214, 214);
+  border-top: 1px solid rgb(214, 214, 214);
+  // border-radius:  0 0 5px 5px;
   min-height: 30vh;
 }
 

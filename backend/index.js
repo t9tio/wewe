@@ -35,7 +35,7 @@ nextApp.prepare().then(() => {
     }
 
     const totalPageCount = Math.ceil(group.msgCount / pageMsgCount);
-    console.log(totalPageCount);
+    // console.log(totalPageCount);
     let msgs = await Msg.getRange({
       groupName: name,
       idOffset: (totalPageCount - 1) * pageMsgCount,
@@ -89,7 +89,7 @@ nextApp.prepare().then(() => {
       return msg;
     });
 
-    console.log(msgs);
+    // console.log(msgs);
     nextApp.render(req, res, '/chat', {
       group, msgs, totalPageCount, currentPage: page,
     });
