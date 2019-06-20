@@ -1,9 +1,15 @@
+
 import dayjs from 'dayjs';
 import './Msg.scss';
+import { useState } from 'react';
 
 const Msg = ({
   id, text, from, date, link, type, isKnownMember, groupName,
 }) => {
+  const [modalImgSrc, setModalImgSrc] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+
   let msgDiv;
   if (type === 7 && text) {
     const fixedText = text
@@ -14,7 +20,6 @@ const Msg = ({
       .replace(/<img class="qqemoji.*?\/>/gi, '[emoji]')
       .replace(/<img class="emoji.*?\/>/gi, '[emoji]');
 
-
     msgDiv = (
       <p className="chat-message">
         {fixedText}
@@ -23,13 +28,32 @@ const Msg = ({
   } else {
     msgDiv = (
       <div className="chat-msg-img">
-        <img className="msg-img" src={link} alt="chat img" />
+        <a
+          href
+          onClick={() => {
+            setModalImgSrc(link);
+            setIsModalVisible(true);
+          }}
+        >
+          <img className="msg-img" src={link} alt="chat img" />
+        </a>
       </div>
     );
   }
 
   return (
     <div className="">
+
+      <div className={`modal ${isModalVisible ? 'is-active' : ''}`}>
+        <div className="modal-background" role="presentation" onClick={() => setIsModalVisible(false)} />
+        <div className="modal-content">
+          <p className="image">
+            <img src={modalImgSrc} alt="chat img" />
+          </p>
+        </div>
+        <button type="button" className="modal-close is-large" aria-label="close" onClick={() => setIsModalVisible(false)} />
+      </div>
+
       <span className="msg-from">
         {
           isKnownMember
@@ -37,7 +61,7 @@ const Msg = ({
             : from
         }
         &nbsp;
-        <a className="msg-from-time">
+        <a className="msg-from-time" href={`#${id}`}>
           <small>{dayjs((Number(date))).format('HH:mm A')}</small>
         </a>
       </span>
