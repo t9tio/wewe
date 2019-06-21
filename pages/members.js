@@ -3,6 +3,8 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import ChatTabs from './components/ChatTabs';
 import './members.scss';
+import ChatHero from './components/ChatHero';
+import AdCard from './components/AdCard';
 
 const MemberList = ({ members }) => members.map((member) => {
   if (member.url || member.intro) {
@@ -12,7 +14,7 @@ const MemberList = ({ members }) => members.map((member) => {
           <div className="content">
             <p>
               <strong>{member.name}</strong>
-            &nbsp;
+              &nbsp;
               {member.url ? <a href={member.url}><small><i className="fas fa-home" /></small></a> : ''}
               <br />
               {member.intro ? <small>{member.intro}</small> : <small>&nbsp;</small>}
@@ -22,8 +24,6 @@ const MemberList = ({ members }) => members.map((member) => {
       </div>
     );
   }
-
-
 });
 
 const Index = (props) => {
@@ -37,32 +37,15 @@ const Index = (props) => {
       <Head title={group.name} description={group.description} />
       <Nav />
       <div className="members-section section">
-        <br />
         <div className="container">
           <div className="columns">
             <div className="column is-four-fifths ">
-              <div className="">
-                <p className="title is-5">
-                  <a href={`/chat/${group.name}`}>
-                    <i className="fab fa-weixin has-text-success" />
-                      &nbsp;
-                    {group.name}
-                  </a>
-                </p>
-                <p className="subtitle is-6">
-                  {group.description}
-                  &nbsp;
-                  <a href="https://jinshuju.net/f/hgoWO3" className="tag is-small is-success">I'm a member of this group</a>
-                </p>
-
-                <ChatTabs groupName={group.name} focusedTab="members" />
-
-
-                <MemberList members={members} />
-
-                <br />
-
-              </div>
+              <ChatHero groupName={group.name} groupDesc={group.description} />
+              <ChatTabs groupName={group.name} focusedTab="members" />
+              <MemberList members={members} />
+            </div>
+            <div className="column">
+              <AdCard />
             </div>
           </div>
         </div>

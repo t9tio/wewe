@@ -7,6 +7,7 @@ const Group = require('../db/Group');
 const Msg = require('../db/Msg');
 const GroupMember = require('../db/GroupMember');
 const { pageMsgCount } = require('../config');
+const validator = require('../services/validator');
 
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({
@@ -121,6 +122,49 @@ nextApp.prepare().then(() => {
 
   app.get('/join', async (req, res) => {
     nextApp.render(req, res, '/join');
+  });
+
+  // APIs
+  app.post('/groupmember/add', async (req, res) => {
+    const {
+      groupName,
+      name,
+      email,
+      url,
+      intro,
+      date,
+    } = req.body;
+
+    const valRes = validator.memberInfo({
+      groupName,
+      name,
+      email,
+      url,
+      intro,
+      date,
+    });
+
+    if (valRes.success === false) {
+      res.status(400).json(valRes);
+      return 0;
+    }
+
+    const currentMember = await GroupMember.get({ groupName, name });
+    if (currentMember) {
+      res.status(400).json('Member already exist, contact support if other person takes your name');
+      return 0;
+    }
+
+    await GroupMember.put({
+      groupName,
+      name,
+      email,
+      url,
+      intro,
+      date,
+    });
+
+    res.json('ok');
   });
 
   app.get('*', (req, res) => handle(req, res));

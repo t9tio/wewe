@@ -5,6 +5,8 @@ import Footer from './components/Footer';
 import Msg from './components/Msg';
 import './chat.scss';
 import ChatTabs from './components/ChatTabs';
+import ChatHero from './components/ChatHero';
+import AdCard from './components/AdCard';
 
 const Index = (props) => {
   const {
@@ -16,28 +18,13 @@ const Index = (props) => {
     <div>
       <Head title={group.name} description={group.description} />
       <Nav />
-      <div className="chat-section section">
-        <br />
-        <div className="container">
 
+      <div className="chat-section section">
+        <div className="container">
           <div className="columns">
             <div className="column is-four-fifths ">
-              <div className="">
-                <p className="title is-5">
-                  <a href={`/chat/${group.name}`}>
-                    <i className="fab fa-weixin has-text-success" />
-                      &nbsp;
-                    {group.name}
-                  </a>
-                </p>
-                <p className="subtitle is-6">
-                  {group.description}
-                  &nbsp;
-                  <a href="https://jinshuju.net/f/hgoWO3" className="tag is-small is-success">I'm a member of this group</a>
-                </p>
-
-                <ChatTabs groupName={group.name} focusedTab="messages" />
-              </div>
+              <ChatHero groupName={group.name} groupDesc={group.description} />
+              <ChatTabs groupName={group.name} focusedTab="messages" />
 
               <div className="msg-section">
                 <ReactPaginate
@@ -115,21 +102,7 @@ const Index = (props) => {
 
             </div>
             <div className="column">
-              <div className="card ad-card">
-                <div className="card-image">
-                  <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi">
-                    <figure className="image">
-                      <img src="https://raw.githubusercontent.com/timqian/images/master/tomatopie-header.gif" alt="Placeholder" />
-                    </figure>
-                  </a>
-                </div>
-                <div className="content has-text-centered">
-                  <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi"><strong>tomato-pie</strong></a>
-                  <br />
-                  <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi">Peek into your working status with ease.</a>
-                </div>
-                <a className="chat-ads-card" href="/advertise"><small>Ad</small></a>
-              </div>
+              <AdCard />
             </div>
 
           </div>

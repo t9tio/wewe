@@ -56,7 +56,7 @@ function Nav() {
           <div className={`navbar-menu ${isBurgerActive ? 'is-active' : ''}`}>
             <div className="navbar-start" />
             <div className="navbar-end">
-              {
+              {/* {
                 user
                   ? (
 
@@ -77,7 +77,7 @@ function Nav() {
                       <a href="https://jinshuju.net/f/hgoWO3" className="button is-black"><strong>Sign up</strong></a>
                     </div>
                   )
-              }
+              } */}
               <a href="/join" className="navbar-item "><strong>Feedback</strong></a>
             </div>
           </div>
