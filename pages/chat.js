@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Msg from './components/Msg';
 import './chat.scss';
+import ChatTabs from './components/ChatTabs';
 
 const Index = (props) => {
   const {
@@ -32,19 +33,10 @@ const Index = (props) => {
                 <p className="subtitle is-6">
                   {group.description}
                   &nbsp;
-                  <a href="https://jinshuju.net/f/hgoWO3" className="tag is-small is-success" >I'm a member of this group</a>
+                  <a href="https://jinshuju.net/f/hgoWO3" className="tag is-small is-success">I'm a member of this group</a>
                 </p>
 
-                <div className="tabs">
-                  <ul>
-                    <li className="is-active"><a href={`/chat/${group.name}`}>Messages</a></li>
-                    <li><a>Live</a></li>
-                    <li><a>Events</a></li>
-                    <li><a>Members</a></li>
-                    <li><a>Topics</a></li>
-                    <li><a>Statistics</a></li>
-                  </ul>
-                </div>
+                <ChatTabs groupName={group.name} focusedTab="messages" />
               </div>
 
               <div className="msg-section">

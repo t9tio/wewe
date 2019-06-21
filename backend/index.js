@@ -95,6 +95,16 @@ nextApp.prepare().then(() => {
     });
   });
 
+  app.get('/chat/:groupName/members', async (req, res) => {
+    const { groupName } = req.params;
+    const group = await Group.get({ name: groupName });
+    const members = await GroupMember.getAllMembers({ groupName });
+
+    nextApp.render(req, res, '/members', {
+      group, members,
+    });
+  });
+
   app.get('/chat/:groupname/member/:username', async (req, res) => {
     const { groupname, username } = req.params;
     const groupMember = await GroupMember.get({ groupName: groupname, name: username });

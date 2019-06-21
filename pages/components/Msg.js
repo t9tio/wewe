@@ -30,6 +30,7 @@ const Msg = ({
       <div className="chat-msg-img">
         <a
           href
+          style={{ cursor: 'zoom-in' }}
           onClick={() => {
             setModalImgSrc(link);
             setIsModalVisible(true);
