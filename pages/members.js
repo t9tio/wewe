@@ -6,25 +6,21 @@ import './members.scss';
 import ChatHero from './components/ChatHero';
 import AdCard from './components/AdCard';
 
-const MemberList = ({ members }) => members.map((member) => {
-  if (member.url || member.intro) {
-    return (
-      <div className="media">
-        <div className="media-content">
-          <div className="content">
-            <p>
-              <strong>{member.name}</strong>
+const MemberList = ({ members }) => members.map(member => (
+  <div className="media">
+    <div className="media-content">
+      <div className="content">
+        <p>
+          <strong>{member.name}</strong>
               &nbsp;
-              {member.url ? <a href={member.url}><small><i className="fas fa-home" /></small></a> : ''}
-              <br />
-              {member.intro ? <small>{member.intro}</small> : <small>&nbsp;</small>}
-            </p>
-          </div>
-        </div>
+          {member.url ? <a href={member.url}><small><i className="fas fa-home" /></small></a> : ''}
+          <br />
+          {member.intro ? <small>{member.intro}</small> : <small>&nbsp;</small>}
+        </p>
       </div>
-    );
-  }
-});
+    </div>
+  </div>
+));
 
 const Index = (props) => {
   const {
