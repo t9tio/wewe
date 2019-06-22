@@ -2,6 +2,7 @@
 import dayjs from 'dayjs';
 import './Msg.scss';
 import { useState } from 'react';
+import { maskName } from '../utils';
 
 const Msg = ({
   id, text, from, date, link, type, isKnownMember, groupName,
@@ -59,7 +60,7 @@ const Msg = ({
         {
           isKnownMember
             ? <a href={`/chat/${groupName}/member/${from}`}><strong>{from}</strong></a>
-            : from
+            : `user-${maskName(from)}`
         }
         &nbsp;
         <a className="msg-from-time" href={`#${id}`}>

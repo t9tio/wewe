@@ -1,8 +1,7 @@
+// 1000 => 1k
 // https://stackoverflow.com/a/40724354/4674834
-
-const SI_SYMBOL = ['', 'k', 'M', 'G', 'T', 'P', 'E'];
-
 function abbreviateNumber(number) {
+  const SI_SYMBOL = ['', 'k', 'M', 'G', 'T', 'P', 'E'];
   // what tier? (determines SI symbol)
   const tier = Math.log10(number) / 3 | 0;
 
@@ -20,6 +19,20 @@ function abbreviateNumber(number) {
   return scaled.toFixed(1) + suffix;
 }
 
+
+function maskName(name) {
+  const dic = 'abcdefghijk';
+  return [...name]
+    .map((char) => {
+      const lastCharCodeDigit = Number(char.charCodeAt().toString().split('').pop());
+      return dic[lastCharCodeDigit];
+    })
+    .join('');
+}
+
+console.log(maskName('timqian@ t9t.io'));
+
 module.exports = {
   abbreviateNumber,
+  maskName,
 };

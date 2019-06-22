@@ -39,6 +39,7 @@ bot.on('message', async (message) => {
         // MessageType.Video
         // MessageType.Url
         const type = await message.type();
+        if (config.knownGroups.includes(from)) return;
         if (type === bot.Message.Type.Audio || type === bot.Message.Type.Video || type === bot.Message.Type.Image) {
           const filebox = await message.toFileBox();
           const filename = filebox.name;
