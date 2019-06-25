@@ -15,7 +15,7 @@ const config = {
   },
   pageMsgCount: 50,
   // groups to pull msgs
-  knownGroups: ['t9t.io community', 't9t.io community 2', 'wewe', 'GraphQL交流'],
+  knownGroups: ['t9t.io community', 't9t.io community 2', 'wewe', 'GraphQL交流', 'ReactJS中文', 'ReactJS 2群', 'Clojure'],
 };
 
 module.exports = config;
