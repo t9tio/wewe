@@ -35,7 +35,7 @@ const Index = (props) => {
       <div className="members-section section">
         <div className="container">
           <div className="columns">
-            <div className="column is-four-fifths ">
+            <div className="members-column column is-four-fifths">
               <ChatHero groupName={group.name} groupDesc={group.description} />
               <ChatTabs groupName={group.name} focusedTab="members" />
               <MemberList members={members} />

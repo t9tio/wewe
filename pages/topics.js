@@ -50,7 +50,7 @@ const Index = (props) => {
       <div className="topics-section section">
         <div className="container">
           <div className="columns">
-            <div className="column is-four-fifths ">
+            <div className="topics-column column is-four-fifths">
               <ChatHero groupName={group.name} groupDesc={group.description} />
               <ChatTabs groupName={group.name} focusedTab="topics" />
               <TopicList topics={topics} groupName={group.name} />
