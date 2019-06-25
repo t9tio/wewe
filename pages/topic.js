@@ -14,10 +14,7 @@ const TopicComponent = ({ topic, msgs, group }) => {
     <div>
       <h1 className="title is-4">{topic.title}</h1>
       <p className="subtitle is-7 has-text-grey">
-        #
-        {topic.id}
-        {' '}
-          collected on
+        collected on
         {' '}
         {dayjs((Number(topic.date))).format('YYYY-MM-DD')}
         {' '}

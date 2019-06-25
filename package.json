@@ -42,6 +42,7 @@
     "react-dom": "^16.8.6",
     "react-ga": "^2.5.7",
     "react-paginate": "^6.3.0",
+    "timeago.js": "^4.0.0-beta.2",
     "validator": "^11.0.0"
   },
   "devDependencies": {

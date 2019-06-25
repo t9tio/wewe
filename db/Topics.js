@@ -53,7 +53,7 @@ async function getRange({ groupName, idOffset, idLimit }) {
 }
 
 async function add({
-  groupName, title, from, date, msgRange, hiddenMsgs,
+  groupName, title, description, from, date, msgRange, hiddenMsgs,
 }) {
   const msgCount = await Group.incTopicCount({
     name: groupName,
@@ -61,7 +61,7 @@ async function add({
   await docClient.put({
     TableName: 'wewe-topic',
     Item: {
-      groupName, id: msgCount - 1, title, from, date, msgRange, hiddenMsgs,
+      groupName, id: msgCount - 1, title, description, from, date, msgRange, hiddenMsgs,
     },
   }).promise();
 }

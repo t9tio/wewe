@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import { format } from 'timeago.js';
 import Head from './components/Head';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -15,12 +15,9 @@ const TopicList = ({ topics, groupName }) => topics.map(topic => (
         <a href={`/chat/${groupName}/topic/${topic.id}`}><strong>{topic.title}</strong></a>
         <br />
         <small>
-          #
-          {topic.id}
+          collected
           {' '}
-          collected on
-          {' '}
-          {dayjs((Number(topic.date))).format('YYYY-MM-DD')}
+          {format(Number(topic.date))}
           {' '}
           by
           {' '}

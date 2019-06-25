@@ -1,4 +1,5 @@
-import dayjs from 'dayjs';
+import { format } from 'timeago.js';
+
 import './Msg.scss';
 import { useState } from 'react';
 import { maskName } from '../utils';
@@ -63,7 +64,7 @@ const Msg = ({
         }
         &nbsp;
         <a className="msg-from-time" href={`#${id}`}>
-          <small>{dayjs((Number(date))).format('HH:mm A')}</small>
+          <small>{format(Number(date))}</small>
         </a>
       </span>
 
