@@ -12,7 +12,7 @@
   border-radius: 5px;
   position: relative;
   // box-shadow: 2px 2px 3px rgba(10, 10, 10, 0.1);
-  background: #f7f7f7;
+  background: #f4f4f4;
   border: 1px solid #d1d5da;
 }
 
@@ -62,21 +62,3 @@
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
-.chat-ads-card {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  border: 1px solid;
-  padding: 0 2px;
-  margin: 0;
-  line-height: 1rem;
-  border-radius: 3px;
-}
-
-.cad,.ad-card {
-  border-radius: 5px;
-  padding: 5px 5px 0 5px;
-  .card-image {
-    
-  }
-}

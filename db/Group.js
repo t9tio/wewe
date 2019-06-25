@@ -77,6 +77,21 @@ async function incMsgCount({ name }) {
   return res.Attributes.msgCount;
 }
 
+async function incTopicCount({ name }) {
+  const res = await docClient.update({
+    TableName: 'wewe-group',
+    Key: { name },
+    AttributeUpdates: {
+      topicCount: {
+        Action: 'ADD',
+        Value: 1,
+      },
+    },
+    ReturnValues: 'UPDATED_NEW',
+  }).promise();
+  return res.Attributes.topicCount;
+}
+
 module.exports = {
   createTable,
   deleteTable,
@@ -84,4 +99,15 @@ module.exports = {
   getAll,
   put,
   incMsgCount,
+  incTopicCount,
 };
+
+// put({
+//   name: 'wewe',
+//   description: 'Building wewe together',
+//   logoUrl: 'https://user-images.githubusercontent.com/5512552/58616555-87959580-82f0-11e9-8ac4-4045463f2f41.png',
+//   type: 'wechat',
+//   userCount: 3,
+//   msgCount: 0,
+//   topicCount: 0,
+// });

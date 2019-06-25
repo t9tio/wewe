@@ -1,0 +1,14 @@
+.cad,.ad-card {
+  border-radius: 5px;
+  padding: 5px 5px 0 5px;
+  .ad-card-link {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: 1px solid;
+    padding: 0 2px;
+    margin: 0;
+    line-height: 1rem;
+    border-radius: 3px;
+  }
+}

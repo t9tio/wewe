@@ -6,6 +6,7 @@ const next = require('next');
 const Group = require('../db/Group');
 const Msg = require('../db/Msg');
 const GroupMember = require('../db/GroupMember');
+const Topics = require('../db/Topics');
 const { pageMsgCount } = require('../config');
 const validator = require('../services/validator');
 
@@ -118,6 +119,50 @@ nextApp.prepare().then(() => {
     // nextApp.render(req, res, '/chat', {
     //   group, msgs, totalPageCount, currentPage: page,
     // });
+  });
+
+  app.get('/chat/:groupName/topics', async (req, res) => {
+    const { groupName } = req.params;
+    const group = await Group.get({ name: groupName });
+
+    const totalPageCount = Math.ceil(group.topicCount / pageMsgCount);
+
+    const topics = await Topics.getRange({
+      groupName,
+      idOffset: (totalPageCount - 1) * pageMsgCount,
+      idLimit: pageMsgCount,
+    });
+
+    nextApp.render(req, res, '/topics', {
+      group, topics: topics.reverse(),
+    });
+  });
+
+  app.get('/chat/:groupName/topic/:topicId', async (req, res) => {
+    const { groupName, topicId } = req.params;
+    const group = await Group.get({ name: groupName });
+    const topic = await Topics.get({ groupName, id: Number(topicId) });
+    let msgs = await Msg.getRange({
+      groupName,
+      idOffset: topic.msgRange[0],
+      idLimit: topic.msgRange[1] - topic.msgRange[0],
+    });
+    // potential bug: more than 100 member of a group
+    const members = await GroupMember.getAllMemberNames({
+      groupName,
+    });
+
+    // console.log(members);
+    msgs = msgs.map((msg) => {
+      if (members.includes(msg.from)) {
+        msg.isKnownMember = true;
+      }
+      return msg;
+    });
+
+    nextApp.render(req, res, '/topic', {
+      group, topic, msgs,
+    });
   });
 
   app.get('/join', async (req, res) => {

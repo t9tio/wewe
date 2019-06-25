@@ -1,3 +1,5 @@
+import './AdCard.scss';
+
 function AdCard() {
   return (
     <div className="card ad-card">
@@ -13,7 +15,7 @@ function AdCard() {
         <br />
         <a className="has-text-grey" href="https://chrome.google.com/webstore/detail/gffgechdocgfajkbpinmjjjlkjfjampi">Peek into your working status with ease.</a>
       </div>
-      <a className="chat-ads-card" href="/advertise"><small>Ad</small></a>
+      <a className="ad-card-link" href="/advertise"><small>Ad</small></a>
     </div>
   );
 }

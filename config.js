@@ -13,7 +13,7 @@ const config = {
     bucket: 'wewe-imgs',
     s3RootPath: 'https://wewe-imgs.s3.amazonaws.com',
   },
-  pageMsgCount: 20,
+  pageMsgCount: 50,
   // groups to pull msgs
   knownGroups: ['t9t.io community', 't9t.io community 2', 'wewe', 'GraphQL交流'],
 };

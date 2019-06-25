@@ -10,6 +10,16 @@
   bottom: 1em;
 }
 
-.chatcard-member-count {
+.chatcard-info-a {
   font-size: .8rem;
+  color: #555;
+
+  a,&:hover {
+    color: #3273dc;
+  }
+}
+
+.chatcard-info-div {
+  font-size: .8rem;
+  color: #555;
 }

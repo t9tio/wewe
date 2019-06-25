@@ -15,6 +15,7 @@ const ChatCards = ({ groups }) => {
               userCount={group.userCount}
               type={group.type}
               msgCount={group.msgCount}
+              topicCount={group.topicCount}
             />
           </div>
         ))

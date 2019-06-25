@@ -1,44 +1,62 @@
+import dayjs from 'dayjs';
 import Head from './components/Head';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import ChatTabs from './components/ChatTabs';
-import './members.scss';
 import ChatHero from './components/ChatHero';
 import AdCard from './components/AdCard';
 
-const MemberList = ({ members }) => members.map(member => (
-  <div className="media members-media">
+import './topics.scss';
+
+const TopicList = ({ topics, groupName }) => topics.map(topic => (
+  <div className="topic-level media">
     <div className="media-content">
       <div className="content">
-        <p>
-          <strong>{member.name}</strong>
-              &nbsp;
-          {member.url ? <a href={member.url}><small><i className="fas fa-home" /></small></a> : ''}
-          <br />
-          {member.intro ? <small>{member.intro}</small> : <small>&nbsp;</small>}
-        </p>
+        <a href={`/chat/${groupName}/topic/${topic.id}`}><strong>{topic.title}</strong></a>
+        <br />
+        <small>
+          #
+          {topic.id}
+          {' '}
+          collected on
+          {' '}
+          {dayjs((Number(topic.date))).format('YYYY-MM-DD')}
+          {' '}
+          by
+          {' '}
+          {topic.from}
+        </small>
       </div>
     </div>
+    <div className="media-right">
+      <a href={`/chat/${groupName}/topic/${topic.id}`}>
+        <span className="icon">
+          <i className="far fa-comment" />
+        </span>
+        <small>{topic.msgRange[1] - topic.msgRange[0]}</small>
+      </a>
+    </div>
   </div>
+
 ));
 
 const Index = (props) => {
   const {
-    group, members,
+    group, topics,
   } = props;
 
-
+  console.log(topics);
   return (
     <div>
       <Head title={group.name} description={group.description} />
       <Nav />
-      <div className="members-section section">
+      <div className="topics-section section">
         <div className="container">
           <div className="columns">
             <div className="column is-four-fifths ">
               <ChatHero groupName={group.name} groupDesc={group.description} />
-              <ChatTabs groupName={group.name} focusedTab="members" />
-              <MemberList members={members} />
+              <ChatTabs groupName={group.name} focusedTab="topics" />
+              <TopicList topics={topics} groupName={group.name} />
             </div>
             <div className="column">
               <AdCard />
@@ -55,10 +73,10 @@ const Index = (props) => {
 // ref: https://stackoverflow.com/a/52136943/4674834
 Index.getInitialProps = async ({
   query: {
-    group, members,
+    group, topics,
   },
 }) => ({
-  group, members,
+  group, topics,
 });
 
 export default Index;
