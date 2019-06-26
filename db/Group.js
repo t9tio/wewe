@@ -52,12 +52,12 @@ async function getAll() {
 }
 
 async function put({
-  name, description, logoUrl, type, userCount, msgCount,
+  name, description, logoUrl, type, userCount, msgCount, topicCount,
 }) {
   await docClient.put({
     TableName: 'wewe-group',
     Item: {
-      name, description, logoUrl, type, userCount, msgCount,
+      name, description, logoUrl, type, userCount, msgCount, topicCount,
     },
   }).promise();
 }

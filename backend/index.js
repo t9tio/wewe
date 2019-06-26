@@ -165,8 +165,8 @@ nextApp.prepare().then(() => {
     });
   });
 
-  app.get('/join', async (req, res) => {
-    nextApp.render(req, res, '/join');
+  app.get('/about', async (req, res) => {
+    nextApp.render(req, res, '/about');
   });
 
   // APIs

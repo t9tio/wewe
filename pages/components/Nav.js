@@ -34,6 +34,12 @@ function Nav() {
             <a className="navbar-item" href="/">
               <img src="https://t9t.io/favicon.ico" alt="favicon" width="28" height="28" />
             </a>
+            <a href="/" className="navbar-item">
+              <strong>Home</strong>
+            </a>
+            <a href="/about" className="navbar-item">
+              <strong>About</strong>
+            </a>
             {/* <div className="navbar-item">
               <p className="control has-icons-right">
                 <input className="input nav-input" type="search" placeholder="Email" />
@@ -55,11 +61,11 @@ function Nav() {
 
           <div className={`navbar-menu ${isBurgerActive ? 'is-active' : ''}`}>
             <div className="navbar-start" />
-            <div className="navbar-end">
-              {/* {
-                user
-                  ? (
 
+            {/* {
+              user
+                ? (
+                  <div className="navbar-end">
                     <div className="navbar-item has-dropdown is-hoverable">
                       <a href className="navbar-link">
                         {user}
@@ -70,16 +76,17 @@ function Nav() {
                         </a>
                       </div>
                     </div>
+                  </div>
+                )
+                : (
+                  <div className="navbar-end">
+                    <a href className="navbar-item"><strong>Sign up</strong></a>
+                    <a href className="navbar-item"><strong>Sign in</strong></a>
+                  </div>
+                )
+            } */}
+            {/* <a href="/join" className="navbar-item "><strong>Feedback</strong></a> */}
 
-                  )
-                  : (
-                    <div className="navbar-item">
-                      <a href="https://jinshuju.net/f/hgoWO3" className="button is-black"><strong>Sign up</strong></a>
-                    </div>
-                  )
-              } */}
-              <a href="/join" className="navbar-item "><strong>Feedback</strong></a>
-            </div>
           </div>
         </div>
       </nav>
