@@ -21,12 +21,12 @@ const Group = require('../db/Group');
 // });
 
 
-Group.put({
-  name: 'ReactJS 中文',
-  description: 'ReactJS 中文群',
-  logoUrl: 'https://avatars0.githubusercontent.com/u/6412038?s=200&v=4',
-  type: 'wechat',
-  userCount: 500,
-  msgCount: 0,
-  topicCount: 0,
-});
+// Group.put({
+//   name: 'ReactJS 中文',
+//   description: 'ReactJS 中文群',
+//   logoUrl: 'https://avatars0.githubusercontent.com/u/6412038?s=200&v=4',
+//   type: 'wechat',
+//   userCount: 500,
+//   msgCount: 0,
+//   topicCount: 0,
+// });

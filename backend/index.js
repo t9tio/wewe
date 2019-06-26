@@ -169,6 +169,9 @@ nextApp.prepare().then(() => {
     nextApp.render(req, res, '/about');
   });
 
+  app.get('/join', async (req, res) => {
+    nextApp.render(req, res, '/join');
+  })
   // APIs
   app.post('/groupmember/add', async (req, res) => {
     const {

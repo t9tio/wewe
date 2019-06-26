@@ -34,10 +34,10 @@ const Topic = require('../db/Topics');
 //   groupName: 'ReactJS中文',
 //   from: 'timqian@ t9t.io',
 //   date: new Date().getTime(),
-//   msgRange: [0, 69],
+//   msgRange: [86, 109],
 //   hiddenMsgs: [],
-//   title: 'ReactJS中文群加入 wewe',
-//   description: '对 wewe 的讨论',
+//   title: '有同学做过富文本编辑器吗，有没有推荐的库',
+//   description: 'slatejs, draftjs, Braft Editor 等工具比较',
 // });
 
 // Topic.add({

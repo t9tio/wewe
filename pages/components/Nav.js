@@ -62,7 +62,7 @@ function Nav() {
           <div className={`navbar-menu ${isBurgerActive ? 'is-active' : ''}`}>
             <div className="navbar-start" />
 
-            {/* {
+            {
               user
                 ? (
                   <div className="navbar-end">
@@ -84,7 +84,7 @@ function Nav() {
                     <a href className="navbar-item"><strong>Sign in</strong></a>
                   </div>
                 )
-            } */}
+            }
             {/* <a href="/join" className="navbar-item "><strong>Feedback</strong></a> */}
 
           </div>
