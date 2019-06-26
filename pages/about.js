@@ -10,7 +10,7 @@ const Index = () => (
     <div className="section" style={{ paddingTop: '1.8rem' }}>
       <div className="container content about-content">
         <h1 className="title">
-          What is wewe an why I build it
+          What is wewe and why I build it
         </h1>
 
         <p className="subtitle is-7 has-text-grey">
