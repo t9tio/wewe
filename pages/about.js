@@ -57,7 +57,7 @@ const Index = () => (
           To my surprise, more than 500 people joined the group and we got some interesting disscussions in the group.
           However the disscussions are only visible to the group members, people outsite the group might also find useful info from the chat history, but they never got the opptunity.
           And every group chat has this issue, no matter it is wechat group, slack group or telegram group.
-          There are giant amount of infomation hidden inside group chat and people outside that small group might find it useful.
+          There is a giant amount of information hidden inside group chat and people outside that small group might find it useful.
           I think it will be great if there is a tool can bring the valuable/meaningless info to the open internet.
           So I start to build wewe.
         </p>

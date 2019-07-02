@@ -20,13 +20,32 @@ const Group = require('../db/Group');
 //   topicCount: 0,
 // });
 
-
 // Group.put({
 //   name: 'ReactJS 中文',
 //   description: 'ReactJS 中文群',
 //   logoUrl: 'https://avatars0.githubusercontent.com/u/6412038?s=200&v=4',
 //   type: 'wechat',
 //   userCount: 500,
+//   msgCount: 0,
+//   topicCount: 0,
+// });
+
+// Group.put({
+//   name: 'Haskell',
+//   description: 'Haskell 中文群',
+//   logoUrl: 'https://avatars0.githubusercontent.com/u/450574?s=200&v=4',
+//   type: 'wechat',
+//   userCount: 300,
+//   msgCount: 0,
+//   topicCount: 0,
+// });
+
+// Group.put({
+//   name: 'LISP',
+//   description: 'LISP 中文群',
+//   logoUrl: 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/lisp/lisp.png',
+//   type: 'wechat',
+//   userCount: 100,
 //   msgCount: 0,
 //   topicCount: 0,
 // });
