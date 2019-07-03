@@ -2,10 +2,26 @@ import Head from 'next/head';
 import 'bulma';
 import './Head.scss';
 
+import { gaTrackingId } from '../../config';
 
 function MyHead({ title, description }) {
   return (
     <Head>
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gaTrackingId}');
+          `,
+        }}
+      />
       <title>{title}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta charSet="utf-8" />

@@ -49,11 +49,11 @@ function ChatHero({ groupName, groupDesc }) {
         <div className="modal-background" role="presentation" onClick={() => setIsModalVisible(false)} />
         <div className="modal-content box">
           <div className="">
-            <h1 className="title is-5 has-text-centered">
+            <p className="title is-5 has-text-centered">
               认领你在「&nbsp;
               {groupName}
               &nbsp;」的独到见解
-            </h1>
+            </p>
             <hr />
             <div className="field is-horizontal">
               <div className="field-label is-normal">

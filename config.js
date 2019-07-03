@@ -14,6 +14,7 @@ const config = {
     s3RootPath: 'https://wewe-imgs.s3.amazonaws.com',
   },
   pageMsgCount: 50,
+  gaTrackingId: 'UA-56506279-9',
 };
 
 module.exports = config;
