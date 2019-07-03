@@ -85,8 +85,9 @@ function Nav() {
                   </div>
                 )
             } */}
-            {/* <a href="/join" className="navbar-item "><strong>Feedback</strong></a> */}
-
+            <div className="navbar-end">
+              <a href="/join" className="navbar-item "><strong>Join wewe</strong></a>
+            </div>
           </div>
         </div>
       </nav>
