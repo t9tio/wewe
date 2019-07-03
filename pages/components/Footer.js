@@ -13,6 +13,9 @@ function Footer() {
               <i className="fab fa-twitter fa-2x" />
             </a>
 
+            <a href="https://join.slack.com/t/t9tio/shared_invite/enQtNjgzMzkwMDM0NTE3LTE5ZTUzYjU4Y2I0YzRiZjNkYTkzMzE1ZmM0NDdmYzRlZmMxNGY1MzZlN2EwYjYyNWVlMWY0Nzk2MDBhNWZlY2I">
+              <i className="fab fa-slack fa-2x" />
+            </a>
             <a href="https://raw.githubusercontent.com/timqian/images/master/3811553342733_.pic.jpg">
               <i className="fab fa-weixin fa-2x" />
             </a>

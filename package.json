@@ -33,6 +33,7 @@
     "cors": "^2.8.5",
     "dayjs": "^1.8.14",
     "express": "^4.17.1",
+    "linkifyjs": "^2.1.8",
     "lodash.chunk": "^4.2.0",
     "nanoid": "^2.0.3",
     "next": "^8.1.0",

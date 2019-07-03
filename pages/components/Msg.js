@@ -1,4 +1,5 @@
 import { format } from 'timeago.js';
+import Linkify from 'linkifyjs/react';
 
 import './Msg.scss';
 import { useState } from 'react';
@@ -10,9 +11,9 @@ const Msg = ({
   const [modalImgSrc, setModalImgSrc] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-
   let msgDiv;
   if (type === 7 && text) {
+    // text
     const fixedText = text
       .replace(/<a.*?>/gi, '')
       .replace(/<\/a>/gi, '')
@@ -22,11 +23,29 @@ const Msg = ({
       .replace(/<img class="emoji.*?\/>/gi, '[emoji]');
 
     msgDiv = (
-      <p className="chat-message">
+      <Linkify className="chat-message">
         {fixedText}
-      </p>
+      </Linkify>
     );
-  } else {
+  } else if (type === 13) {
+    // video
+    msgDiv = (
+      <video controls className="chat-msg-video">
+        <source src={link} />
+        Your browser does not support HTML5 video.
+      </video>
+    );
+  } else if (type === 1) {
+    // shared link
+    const rx = /url&gt;(http.*?)&lt;/gi;
+    const fixedText = rx.exec(text)[1];
+    msgDiv = (
+      <Linkify className="chat-message">
+        {fixedText}
+      </Linkify>
+    );
+  } else if (type === 6) {
+    // img
     msgDiv = (
       <div className="chat-msg-img">
         <a

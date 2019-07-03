@@ -166,7 +166,7 @@ function ChatHero({ groupName, groupDesc }) {
           {groupDesc}
           &nbsp;
           <a href className="tag is-small is-success" onClick={() => setIsModalVisible(true)}>
-            I&apos;m a member of this group.
+            I&apos;m a member of this group
           </a>
         </p>
       </div>

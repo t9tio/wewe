@@ -43,7 +43,7 @@ GroupDao.getAll().then(async (groups) => {
           // MessageType.Video
           // MessageType.Url
           const type = await message.type();
-          if (knownGroups.includes(from)) return;
+          if (knownGroups.includes(from) && type !== bot.Message.Type.Recalled) return;
           if (type === bot.Message.Type.Audio || type === bot.Message.Type.Video || type === bot.Message.Type.Image) {
             const filebox = await message.toFileBox();
             const filename = filebox.name;
@@ -53,6 +53,16 @@ GroupDao.getAll().then(async (groups) => {
               groupName, from, date, type, link,
             });
             console.log('msg saved to db', groupName, from, date, type, link);
+          } else if (type === bot.Message.Type.Recalled) {
+            const recalledMsg = await message.toRecalled();
+            await MsgDao.addMsgOfGroup({
+              groupName,
+              text: recalledMsg.text(),
+              from: recalledMsg.from().name(),
+              date,
+              type,
+            });
+            console.log('msg saved to db', groupName, recalledMsg.text(), recalledMsg.from().name(), type);
           } else {
             const text = await message.text();
             await MsgDao.addMsgOfGroup({

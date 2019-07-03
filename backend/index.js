@@ -9,6 +9,7 @@ const GroupMember = require('../db/GroupMember');
 const Topics = require('../db/Topics');
 const { pageMsgCount } = require('../config');
 const validator = require('../services/validator');
+const removeRecalledMsgs = require('../services/removeRecalledMsgs');
 
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({
@@ -44,6 +45,8 @@ nextApp.prepare().then(() => {
       idLimit: pageMsgCount,
     });
 
+    msgs = removeRecalledMsgs(msgs);
+
     // potential bug: more than 100 member of a group
     const members = await GroupMember.getAllMemberNames({
       groupName: name,
@@ -77,6 +80,8 @@ nextApp.prepare().then(() => {
       idOffset: (page - 1) * pageMsgCount,
       idLimit: pageMsgCount,
     });
+
+    msgs = removeRecalledMsgs(msgs);
 
     // potential bug: more than 100 member of a group
     const members = await GroupMember.getAllMemberNames({
@@ -171,7 +176,7 @@ nextApp.prepare().then(() => {
 
   app.get('/join', async (req, res) => {
     nextApp.render(req, res, '/join');
-  })
+  });
   // APIs
   app.post('/groupmember/add', async (req, res) => {
     const {
