@@ -3,7 +3,6 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import ChatCards from './components/ChatCards';
 import './index.scss';
-import { knownGroups } from '../config';
 
 class Index extends React.Component {
   static async getInitialProps({ query: { groups } }) {
@@ -28,7 +27,7 @@ class Index extends React.Component {
               Open group chat to the world
             </h2>
             <a href="/join">
-              <img alt="Add group" src={`https://img.shields.io/badge/Join-${knownGroups.length}-lightgrey.svg?style=social&&logo=stack-exchange&&logoColor=black`} />
+              <img alt="Add group" src={`https://img.shields.io/badge/Join-${groups.length}-lightgrey.svg?style=social&&logo=stack-exchange&&logoColor=black`} />
             </a>
             &nbsp; &nbsp;
             <a href="https://github.com/t9tio/wewe">

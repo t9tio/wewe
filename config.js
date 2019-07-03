@@ -14,8 +14,6 @@ const config = {
     s3RootPath: 'https://wewe-imgs.s3.amazonaws.com',
   },
   pageMsgCount: 50,
-  // groups to pull msgs
-  knownGroups: ['t9t.io community', 't9t.io community 2', 'wewe', 'GraphQL交流', 'ReactJS中文', 'ReactJS 2群', 'Clojure', 'Haskell', 'LISP'],
 };
 
 module.exports = config;
