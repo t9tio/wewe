@@ -11,6 +11,8 @@ class Index extends React.Component {
 
   render() {
     const { groups } = this.props;
+
+
     return (
       <div>
         <Head title="wewe" description="open group chat to the world" />
@@ -36,7 +38,7 @@ class Index extends React.Component {
           </div>
 
           <div className="section container">
-            <ChatCards groups={groups} />
+            <ChatCards groups={groups.filter(group => group.logoUrl)} />
           </div>
         </div>
         <Footer />
