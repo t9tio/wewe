@@ -49,3 +49,14 @@ const Topic = require('../db/Topics');
 //   title: '如何在两个区间取一个随机数',
 //   // description: '',
 // });
+
+// Topic.add({
+//   groupName: '【集智】注意力与知识管理群',
+//   from: 'timqian@ t9t.io',
+//   date: new Date().getTime(),
+//   msgRange: [108, 137],
+//   hiddenMsgs: [],
+//   title: '封闭群聊的信息开放需求现在很大吗？',
+//   description: '封闭群聊出现也不是一年两年了 有什么因素导致了这个需求的出现 而之前那么久是否有尝试 又因为什么这些尝试并没有那么为人所知',
+// });
+

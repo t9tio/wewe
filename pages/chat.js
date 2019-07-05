@@ -2,7 +2,8 @@ import ReactPaginate from 'react-paginate';
 import Head from './components/Head';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import Msg from './components/Msg';
+import WechatMsg from './components/WechatMsg';
+import SlackMsg from './components/SlackMsg';
 import './chat.scss';
 import ChatTabs from './components/ChatTabs';
 import ChatHero from './components/ChatHero';
@@ -13,6 +14,40 @@ const Index = (props) => {
     group, msgs, totalPageCount, currentPage,
   } = props;
 
+  const Msgs = () => {
+    if (group.type === 'wechat') {
+      return (
+        <div className="msg-container">
+          {
+            msgs.map(msg => (
+              <WechatMsg
+                id={msg.id}
+                text={msg.text}
+                from={msg.from}
+                date={msg.date}
+                link={msg.link}
+                type={msg.type}
+                isKnownMember={msg.isKnownMember}
+                groupName={group.name}
+              />
+            ))
+          }
+        </div>
+      );
+    } if (group.type === 'slack') {
+      return (
+        <div className="msg-container">
+          {
+            msgs.map(msg => (
+              <SlackMsg
+                msg={msg}
+              />
+            ))
+          }
+        </div>
+      );
+    }
+  };
 
   return (
     <div>
@@ -23,7 +58,7 @@ const Index = (props) => {
         <div className="container">
           <div className="columns">
             <div className="column is-four-fifths ">
-              <ChatHero groupName={group.name} groupDesc={group.description} />
+              <ChatHero group={group} />
               <ChatTabs groupName={group.name} focusedTab="messages" />
 
               <div className="msg-section">
@@ -54,22 +89,7 @@ const Index = (props) => {
                     }
                   }}
                 />
-                <div className="msg-container">
-                  {
-                    msgs.map(msg => (
-                      <Msg
-                        id={msg.id}
-                        text={msg.text}
-                        from={msg.from}
-                        date={msg.date}
-                        link={msg.link}
-                        type={msg.type}
-                        isKnownMember={msg.isKnownMember}
-                        groupName={group.name}
-                      />
-                    ))
-                  }
-                </div>
+                <Msgs />
                 <ReactPaginate
                   pageCount={totalPageCount}
                   initialPage={currentPage - 1}

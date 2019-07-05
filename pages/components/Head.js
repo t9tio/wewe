@@ -7,7 +7,10 @@ import { gaTrackingId } from '../../config';
 function MyHead({ title, description }) {
   return (
     <Head>
-      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      {/*
+        ref: https://github.com/zeit/next.js/blob/canary/examples/with-google-analytics/pages/_document.js#L12
+        Global Site Tag (gtag.js) - Google Analytics
+      */}
       <script
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}

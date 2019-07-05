@@ -1,3 +1,4 @@
+
 const { dynamodb, docClient } = require('./index');
 const Group = require('./Group');
 
@@ -66,10 +67,58 @@ async function addMsgOfGroup({
   }).promise();
 }
 
+/**
+ *
+ * @param {Array} msgs
+ * @example msgs
+ * [{
+ *     "user": "UL54328J0",
+ *     "type": "message",
+ *     "subtype": "channel_join",
+ *     "ts": "1562311078.029900",
+ *     "text": "<@UL54328J0> has joined the channel"
+ * },
+ * {
+ *     "client_msg_id": "6C579416-B4D1-4EED-85A8-8DD952244312",
+ *     "type": "message",
+ *     "text": "好多做公众号的，做到一定量，就给你直接砍了",
+ *     "user": "UKTHARF34",
+ *     "ts": "1562305844.029700",
+ *     "team": "TKSPMPXU1"
+ * }]
+ */
+// batch write at most 25 at a time
+// ref: https://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/APIReference/API_BatchWriteItem.html
+async function batchAddSlackMsgs({
+  groupName, msgs,
+}) {
+  const curMsgCount = await Group.incMsgCountByN({
+    name: groupName, n: msgs.length,
+  });
+
+  console.log(curMsgCount, 'curmsgcount');
+  const putRequests = msgs.map((msg, i) => ({
+    PutRequest: {
+      Item: {
+        groupName,
+        id: curMsgCount - i - 1,
+        ...msg,
+      },
+    },
+  }));
+
+  await docClient.batchWrite({
+    RequestItems: {
+      'wewe-msg': putRequests,
+    },
+  }).promise();
+}
+
 module.exports = {
   createTable,
   deleteTable,
   get,
   getRange,
   addMsgOfGroup,
+  batchAddSlackMsgs,
 };

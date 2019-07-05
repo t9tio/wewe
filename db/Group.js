@@ -92,6 +92,21 @@ async function incTopicCount({ name }) {
   return res.Attributes.topicCount;
 }
 
+async function incMsgCountByN({ name, n }) {
+  const res = await docClient.update({
+    TableName: 'wewe-group',
+    Key: { name },
+    AttributeUpdates: {
+      msgCount: {
+        Action: 'ADD',
+        Value: n,
+      },
+    },
+    ReturnValues: 'UPDATED_NEW',
+  }).promise();
+  return res.Attributes.msgCount;
+}
+
 module.exports = {
   createTable,
   deleteTable,
@@ -99,6 +114,7 @@ module.exports = {
   getAll,
   put,
   incMsgCount,
+  incMsgCountByN,
   incTopicCount,
 };
 

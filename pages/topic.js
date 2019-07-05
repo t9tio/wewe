@@ -62,7 +62,7 @@ const Index = (props) => {
         <div className="container">
           <div className="columns">
             <div className="column is-four-fifths ">
-              <ChatHero groupName={group.name} groupDesc={group.description} />
+              <ChatHero group={group} />
               <ChatTabs groupName={group.name} focusedTab="topics" />
               <TopicComponent topic={topic} msgs={msgs} group={group} />
             </div>
