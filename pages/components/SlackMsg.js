@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { format } from 'timeago.js';
 import Linkify from 'linkifyjs/react';
 
@@ -6,17 +7,30 @@ import { useState } from 'react';
 
 const Msg = ({
   msg: {
-    id, text, user, ts, type, files, groupName,
+    id, text, user, ts, type, files, groupName, reply_count,
   },
 }) => {
   const [modalImgSrc, setModalImgSrc] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const date = new Date(Number(ts.split('.')[0]) * 1000);
+
   const MsgDiv = (
-    <Linkify className="chat-message">
-      {text}
-    </Linkify>
+    <div className="chat-message">
+      <Linkify>
+        {text}
+      </Linkify>
+      <br />
+      {
+        reply_count ? (
+          <a className="slack-msg-reply-link tag is-small is-primary">
+            <span>
+              {Number(reply_count) > 1 ? `${reply_count} replies` : `${reply_count} reply`}
+            </span>
+          </a>
+        ) : ''
+      }
+    </div>
   );
 
 

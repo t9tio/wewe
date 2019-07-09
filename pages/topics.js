@@ -42,7 +42,6 @@ const Index = (props) => {
     group, topics,
   } = props;
 
-  console.log(topics);
   return (
     <div>
       <Head title={group.name} description={group.description} />

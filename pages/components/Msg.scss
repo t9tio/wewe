@@ -61,3 +61,8 @@ $gray: #92959E;
   max-width: 20rem;
   max-height: 20rem;
 }
+
+.slack-msg-reply-link {
+  &:hover span {display:none;}
+  &:hover:before {content:"View thread";}
+}

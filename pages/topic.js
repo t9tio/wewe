@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import ChatTabs from './components/ChatTabs';
 import ChatHero from './components/ChatHero';
 import AdCard from './components/AdCard';
-import Msg from './components/Msg';
+import Msg from './components/WechatMsg';
 import './topic.scss';
 
 const TopicComponent = ({ topic, msgs, group }) => {
