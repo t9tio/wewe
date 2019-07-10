@@ -20,7 +20,8 @@ const Msg = ({
       .replace(/<br\/>/gi, '\n')
       // TODO: better emoji support
       .replace(/<img class="qqemoji.*?\/>/gi, '[emoji]')
-      .replace(/<img class="emoji.*?\/>/gi, '[emoji]');
+      .replace(/<img class="emoji.*?\/>/gi, '[emoji]')
+      .replace(/(?<!\d)1\d{10}(?!\d)/gi, '1**********');
 
     msgDiv = (
       <Linkify className="chat-message">
