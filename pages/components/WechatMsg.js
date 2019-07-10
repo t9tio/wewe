@@ -37,13 +37,21 @@ const Msg = ({
     );
   } else if (type === 1) {
     // shared link
-    const rx = /url&gt;(http.*?)&lt;/gi;
-    const fixedText = rx.exec(text) ? rx.exec(text)[1] : null;
-    msgDiv = (
-      <Linkify className="chat-message">
-        {fixedText}
-      </Linkify>
-    );
+    try {
+      const rx = /url&gt;(http.*?)&lt;/gi;
+      const fixedText = rx.exec(text)[1];
+      msgDiv = (
+        <Linkify className="chat-message">
+          {fixedText}
+        </Linkify>
+      );
+    } catch (error) {
+      msgDiv = (
+        <Linkify className="chat-message">
+          [Unsupported msg]
+        </Linkify>
+      );
+    }
   } else if (type === 6) {
     // img
     msgDiv = (
