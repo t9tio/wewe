@@ -6,10 +6,30 @@ import ChatTabs from './components/ChatTabs';
 import ChatHero from './components/ChatHero';
 import AdCard from './components/AdCard';
 import Msg from './components/WechatMsg';
+import SlackMsg from './components/SlackMsg';
 import './topic.scss';
 
 const TopicComponent = ({ topic, msgs, group }) => {
   console.log(msgs.length);
+  let Msgs;
+  if (group.type === 'wechat') {
+    Msgs = msgs.map(msg => (
+      <Msg
+        id={msg.id}
+        text={msg.text}
+        from={msg.from}
+        date={msg.date}
+        link={msg.link}
+        type={msg.type}
+        isKnownMember={msg.isKnownMember}
+        groupName={group.name}
+      />
+    ));
+  } else if (group.type === 'slack') {
+    Msgs = msgs.map(msg => (
+      <SlackMsg msg={msg} noReply />
+    ));
+  }
   return (
     <div>
       <h1 className="title is-4">{topic.title}</h1>
@@ -24,20 +44,7 @@ const TopicComponent = ({ topic, msgs, group }) => {
       </p>
       {topic.description}
       <div className="topic-msg-container">
-        {
-          msgs.map(msg => (
-            <Msg
-              id={msg.id}
-              text={msg.text}
-              from={msg.from}
-              date={msg.date}
-              link={msg.link}
-              type={msg.type}
-              isKnownMember={msg.isKnownMember}
-              groupName={group.name}
-            />
-          ))
-        }
+        {Msgs}
       </div>
     </div>
   );

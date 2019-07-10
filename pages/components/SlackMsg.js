@@ -9,6 +9,7 @@ const Msg = ({
   msg: {
     id, text, user, ts, type, files, groupName, reply_count,
   },
+  noReply,
 }) => {
   const [modalImgSrc, setModalImgSrc] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -22,7 +23,7 @@ const Msg = ({
       </Linkify>
       <br />
       {
-        reply_count ? (
+        reply_count && !noReply ? (
           <a className="slack-msg-reply-link tag is-small is-primary">
             <span>
               {Number(reply_count) > 1 ? `${reply_count} replies` : `${reply_count} reply`}

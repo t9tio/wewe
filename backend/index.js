@@ -138,6 +138,7 @@ nextApp.prepare().then(() => {
       idLimit: pageMsgCount,
     });
 
+    // TODO: get msg count of all slack topics
     nextApp.render(req, res, '/topics', {
       group, topics: topics.reverse(),
     });
@@ -147,27 +148,36 @@ nextApp.prepare().then(() => {
     const { groupName, topicId } = req.params;
     const group = await Group.get({ name: groupName });
     const topic = await Topics.get({ groupName, id: Number(topicId) });
-    let msgs = await Msg.getRange({
-      groupName,
-      idOffset: topic.msgRange[0],
-      idLimit: topic.msgRange[1] - topic.msgRange[0],
-    });
-    // potential bug: more than 100 member of a group
-    const members = await GroupMember.getAllMemberNames({
-      groupName,
-    });
 
-    // console.log(members);
-    msgs = msgs.map((msg) => {
-      if (members.includes(msg.from)) {
-        msg.isKnownMember = true;
-      }
-      return msg;
-    });
+    if (group.type === 'wechat') {
+      let msgs = await Msg.getRange({
+        groupName,
+        idOffset: topic.msgRange[0],
+        idLimit: topic.msgRange[1] - topic.msgRange[0],
+      });
+      // potential bug: more than 100 member of a group
+      const members = await GroupMember.getAllMemberNames({
+        groupName,
+      });
 
-    nextApp.render(req, res, '/topic', {
-      group, topic, msgs,
-    });
+      // console.log(members);
+      msgs = msgs.map((msg) => {
+        if (members.includes(msg.from)) {
+          msg.isKnownMember = true;
+        }
+        return msg;
+      });
+      nextApp.render(req, res, '/topic', {
+        group, topic, msgs,
+      });
+    } else if (group.type === 'slack') {
+      console.log(topic.ts);
+      const msgs = await Msg.getByThreadTs({ ts: topic.ts });
+      console.log(msgs)
+      nextApp.render(req, res, '/topic', {
+        group, topic, msgs: msgs.reverse(),
+      });
+    }
   });
 
   app.get('/about', async (req, res) => {

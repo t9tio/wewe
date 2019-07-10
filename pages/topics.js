@@ -25,14 +25,18 @@ const TopicList = ({ topics, groupName }) => topics.map(topic => (
         </small>
       </div>
     </div>
-    <div className="media-right">
-      <a href={`/chat/${groupName}/topic/${topic.id}`}>
-        <span className="icon">
-          <i className="far fa-comment" />
-        </span>
-        <small>{topic.msgRange[1] - topic.msgRange[0]}</small>
-      </a>
-    </div>
+    {topic.msgRange
+      ? (
+        <div className="media-right">
+          <a href={`/chat/${groupName}/topic/${topic.id}`}>
+            <span className="icon">
+              <i className="far fa-comment" />
+            </span>
+            <small>{topic.msgRange[1] - topic.msgRange[0]}</small>
+          </a>
+        </div>
+      )
+      : ''}
   </div>
 
 ));

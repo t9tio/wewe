@@ -1,4 +1,4 @@
-
+// Note: Create global secondary index on Msg table
 const { dynamodb, docClient } = require('./index');
 const Group = require('./Group');
 
@@ -114,6 +114,36 @@ async function batchAddSlackMsgs({
   }).promise();
 }
 
+async function getByThreadTs({ ts }) {
+  const { Items } = await docClient.query({
+    TableName: 'wewe-msg',
+    IndexName: 'thread_ts-index',
+    KeyConditions: {
+      thread_ts: {
+        ComparisonOperator: 'EQ',
+        AttributeValueList: [ts],
+      },
+    },
+  }).promise();
+
+  return Items;
+}
+
+async function getByTsArr({ tsArr }) {
+  const { Items } = await docClient.query({
+    TableName: 'wewe-msg',
+    IndexName: 'ts',
+    KeyConditions: {
+      ts: {
+        ComparisonOperator: 'IN',
+        AttributeValueList: tsArr,
+      },
+    },
+  }).promise();
+
+  return Items;
+}
+
 module.exports = {
   createTable,
   deleteTable,
@@ -121,4 +151,6 @@ module.exports = {
   getRange,
   addMsgOfGroup,
   batchAddSlackMsgs,
+  getByThreadTs,
+  getByTsArr,
 };
