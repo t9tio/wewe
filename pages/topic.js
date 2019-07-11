@@ -10,7 +10,6 @@ import SlackMsg from './components/SlackMsg';
 import './topic.scss';
 
 const TopicComponent = ({ topic, msgs, group }) => {
-  console.log(msgs.length);
   let Msgs;
   if (group.type === 'wechat') {
     Msgs = msgs.map(msg => (
@@ -26,7 +25,7 @@ const TopicComponent = ({ topic, msgs, group }) => {
       />
     ));
   } else if (group.type === 'slack') {
-    Msgs = msgs.map(msg => (
+    Msgs = msgs.sort((a, b) => a.id - b.id).map(msg => (
       <SlackMsg msg={msg} noReply />
     ));
   }

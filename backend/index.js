@@ -173,7 +173,6 @@ nextApp.prepare().then(() => {
     } else if (group.type === 'slack') {
       console.log(topic.ts);
       const msgs = await Msg.getByThreadTs({ ts: topic.ts });
-      console.log(msgs)
       nextApp.render(req, res, '/topic', {
         group, topic, msgs: msgs.reverse(),
       });
@@ -187,6 +186,7 @@ nextApp.prepare().then(() => {
   app.get('/join', async (req, res) => {
     nextApp.render(req, res, '/join');
   });
+
   // APIs
   app.post('/groupmember/add', async (req, res) => {
     const {
@@ -228,6 +228,12 @@ nextApp.prepare().then(() => {
     });
 
     res.json('ok');
+  });
+
+  app.get('/api/slackThread/:threadTs', async (req, res) => {
+    const { threadTs } = req.params;
+    const msgs = await Msg.getByThreadTs({ ts: threadTs });
+    res.json(msgs);
   });
 
   app.get('*', (req, res) => handle(req, res));
