@@ -1,5 +1,6 @@
 /db.sqlite
 /secret.json
+/scripts/sampleJsons/
 
 # Logs
 logs

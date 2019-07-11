@@ -1,7 +1,8 @@
 const { WebClient } = require('@slack/web-api');
+const { t9tSlackToken } = require('../../secret.json');
 
-// Read a token from the environment variables
-const token = 'xoxp-369402001654-508067868801-670441994593-f5c918bc32fb2df2b3439a7c77099fa1';
+// https://api.slack.com/apps/AKUAA9XUJ/install-on-team?
+const token = t9tSlackToken;
 
 // Initialize
 const web = new WebClient(token);

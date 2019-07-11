@@ -40,12 +40,12 @@ const Group = require('../db/Group');
 //   topicCount: 0,
 // });
 
-Group.put({
-  name: 't9tio',
-  description: 't9t.io slack group',
-  // logoUrl: 'https://raw.githubusercontent.com/timqian/images/master/20190704172031.jpeg',
-  type: 'slack',
-  userCount: 10,
-  msgCount: 0,
-  topicCount: 0,
-});
+// Group.put({
+//   name: 'Noah iii Ark',
+//   // description: 'TypeScript 中文群',
+//   // logoUrl: 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png',
+//   type: 'wechat',
+//   userCount: 200,
+//   msgCount: 0,
+//   topicCount: 0,
+// });
