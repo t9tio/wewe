@@ -49,7 +49,7 @@ const Msg = ({
       </div>
 
       <span className="msg-from">
-        <a href={`/chat/${groupName}/member/${user}`}><strong>{user}</strong></a>
+        {user}
 
         &nbsp;
         <a className="msg-from-time" href={`#${id}`}>

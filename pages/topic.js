@@ -58,7 +58,7 @@ const Index = (props) => {
   return (
     <div>
       <Head title={topic.title} />
-      <Nav />
+      <Nav groupName={group.name} searchUrl={`wewe.t9t.io/chat/${encodeURIComponent(group.name)}`} />
       <div
         className="section"
         style={{

@@ -49,7 +49,7 @@ const Index = (props) => {
   return (
     <div>
       <Head title={group.name} description={group.description} />
-      <Nav />
+      <Nav groupName={group.name} searchUrl={`wewe.t9t.io/chat/${encodeURIComponent(group.name)}`} />
       <div className="topics-section section">
         <div className="container">
           <div className="columns">

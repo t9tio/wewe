@@ -38,7 +38,7 @@ const Index = (props) => {
       return (
         <div className="msg-container">
           {
-            msgs.map(msg => (
+            msgs.filter(msg => !msg.thread_ts || msg.replies).map(msg => (
               <SlackMsg
                 msg={msg}
               />
@@ -52,7 +52,7 @@ const Index = (props) => {
   return (
     <div>
       <Head title={group.name} description={group.description} />
-      <Nav />
+      <Nav groupName={group.name} searchUrl={`wewe.t9t.io/chat/${encodeURIComponent(group.name)}`} />
 
       <div className="chat-section section">
         <div className="container">
