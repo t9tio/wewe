@@ -13,8 +13,8 @@ async function createTable() {
       { AttributeName: 'name', AttributeType: 'S' },
     ],
     ProvisionedThroughput: {
-      ReadCapacityUnits: 5,
-      WriteCapacityUnits: 5,
+      ReadCapacityUnits: 3,
+      WriteCapacityUnits: 3,
     },
   }).promise();
   console.log('successfully created table "wewe-group-member"');

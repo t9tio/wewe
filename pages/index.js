@@ -12,7 +12,6 @@ class Index extends React.Component {
   render() {
     const { groups } = this.props;
 
-
     return (
       <div>
         <Head title="wewe" description="open group chat to the world" />

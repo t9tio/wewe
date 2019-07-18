@@ -2,8 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const next = require('next');
-
+const axios = require('axios');
+const qs = require('qs');
+const secret = require('../secret.json');
 const Group = require('../db/Group');
+const TmpGroup = require('../db/TmpGroup');
 const Msg = require('../db/Msg');
 const GroupMember = require('../db/GroupMember');
 const Topics = require('../db/Topics');
@@ -22,6 +25,7 @@ const app = express();
 nextApp.prepare().then(() => {
   app.use(cors());
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
   app.get('/', async (req, res) => {
     const groups = await Group.getAll();
@@ -236,8 +240,31 @@ nextApp.prepare().then(() => {
     res.json(msgs);
   });
 
-  app.get('*', (req, res) => handle(req, res));
+  app.post('/api/slack/message/add', async (req, res) => {
+    console.log('token should be:', '0TG5la4vs4guENK5Kk3p3jNf');
 
+    console.log(req);
+    res.status(200).json('ok');
+  });
+
+  // slack login
+  app.get('/auth/slack', async (req, res) => {
+    if (!req.query.code) { // access denied
+      return;
+    }
+    const data = {
+      client_id: secret.slack.clientId,
+      client_secret: secret.slack.clientSecret,
+      code: req.query.code,
+    };
+
+    const oauthRes = await axios.post('https://slack.com/api/oauth.access', qs.stringify(data), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+    console.log(oauthRes.data);
+    await TmpGroup.put(oauthRes.data);
+    nextApp.render(req, res, '/new_slack_group');
+  });
+
+  app.get('*', (req, res) => handle(req, res));
   const { PORT = 8080 } = process.env;
   app.listen(PORT);
   console.log(`server running on http://localhost:${PORT}`);

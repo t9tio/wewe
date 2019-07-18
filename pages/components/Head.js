@@ -49,7 +49,7 @@ function MyHead({ title, description }) {
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
         crossOrigin="anonymous"
       /> */}
-
+      <script src="https://embed.small.chat/TKSPMPXU1GLJ4NEWQ5.js" async />
     </Head>
   );
 }
