@@ -23,17 +23,22 @@ class Index extends React.Component {
             <span className="flow-3" />
           </div>
           <div className="container has-text-centered">
-            <h1 className="title head-title is-1 has-text-white">wewe</h1>
-            <h2 className="subtitle has-text-white">
-              Open group chat to the world
-            </h2>
+            <br />
+            <h1 className="title head-title is-1 has-text-white">
+              
+              Open group chats
+            </h1>
             <a href="/join">
               <img alt="Add group" src={`https://img.shields.io/badge/Join-${groups.length}-lightgrey.svg?style=social&&logo=stack-exchange&&logoColor=black`} />
             </a>
+            {/* <h2 className="subtitle has-text-white">
+              Open group chat to the world
+            </h2>
+
             &nbsp; &nbsp;
             <a href="https://github.com/t9tio/wewe">
               <img alt="GitHub stars" src="https://img.shields.io/github/stars/t9tio/wewe.svg?style=social" />
-            </a>
+            </a> */}
           </div>
 
           <div className="section container">

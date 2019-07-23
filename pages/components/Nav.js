@@ -50,11 +50,11 @@ function Nav({ searchUrl, groupName }) {
             <a className="navbar-item" href="/">
               <img src="https://t9t.io/favicon.ico" alt="favicon" width="28" height="28" />
             </a>
-            <a href="/" className="navbar-item">
-              <strong>Home</strong>
+            <a href="/groups" className="navbar-item">
+              <strong>Groups</strong>
             </a>
-            <a href="/about" className="navbar-item">
-              <strong>About</strong>
+            <a href="/join" className="navbar-item">
+              <strong>Join wewe</strong>
             </a>
 
             <a
@@ -110,7 +110,15 @@ function Nav({ searchUrl, groupName }) {
                   </span>
                 </p>
               </div>
-              <a href="/join" className="navbar-item "><strong>Join wewe</strong></a>
+              <a href="/about" className="navbar-item"><strong>About</strong></a>
+              {/* <a href="https://github.com/t9tio/wewe" className="navbar-item">
+                <span className="icon">
+                  <i className="fab fa-github" />
+                </span>
+              </a> */}
+              <a className="navbar-item" href="https://github.com/t9tio/wewe">
+                <img alt="GitHub stars" src="https://img.shields.io/github/stars/t9tio/wewe.svg?style=social" />
+              </a>
             </div>
           </div>
         </div>

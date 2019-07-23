@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1440">
+    <meta name="description" content="Open group chat to the world"/>
+    <link rel="icon" href="https://t9t.io/favicon.ico" />
+    <title>wewe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.0/css/all.css"
+    />
+
+  </head>
+
+  
+  <body>
+    
+    <nav class="navbar is-black is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          
+    <a class="navbar-item" href="https://wewe.t9t.io/">
+      <img src="https://t9t.io/favicon.ico" alt="favicon" height="28" />
+    </a>
+          
+    <a class="navbar-item" href="https://wewe.t9t.io/groups">
+      <strong>Groups</strong>
+    </a>
+  
+    <a class="navbar-item" href="https://wewe.t9t.io/join">
+      <strong>Join wewe</strong>
+    </a>
+  
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="nav-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-menu" id="nav-menu">
+          <div class="navbar-end"> 
+            
+    <a class="navbar-item" href="https://wewe.t9t.io/about">
+      <strong>About</strong>
+    </a>
+    <a class="navbar-item" href="https://github.com/t9tio/wewe">
+      <img alt="GitHub stars" src="https://img.shields.io/github/stars/t9tio/wewe.svg?style=social" />
+    </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+      
+          // Add a click event on each of them
+          $navbarBurgers.forEach( el => {
+            el.addEventListener('click', () => {
+      
+              // Get the target from the "data-target" attribute
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+      
+              // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+              el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+      
+            });
+          });
+        }
+      
+      });
+    </script>
+    <section class="hero is-black">
+      <div class="hero-body">
+        <div class="container"  style="max-width:900px">
+          <h1 class="title is-1 has-text-centered">
+            wewe
+
+          </h1>
+          <h2 class="subtitle is-4 has-text-centered">
+            Open group chat to the world   
+          </h2>
+          <div class="has-text-centered">
+            <a href="https://wewe.t9t.io"><img src="https://raw.githubusercontent.com/timqian/images/master/20190723115805.png" alt="wewe" style="max-height:10rem"></a>
+          </div>
+          <br />
+          <div class="has-text-centered">
+            <a class="button is-white is-rounded is-outlined" href="https://wewe.t9t.io/groups">View groups</a>
+            <a class="button is-white is-rounded" href="https://wewe.t9t.io/join">Join wewe</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  <div class="section">
+    <div class="container" style="max-width:900px">
+      <p class="title is-4  has-text-centered">
+        Why open group chat
+      </p>
+      <div class="columns">
+        
+    <div class="column is-4 is-flex">
+        <div class="has-text-centered box" style="width:100%">
+          Bring valuable disscussions to the open internet
+        </div>
+    </div>
+  
+    <div class="column is-4 is-flex">
+        <div class="has-text-centered box" style="width:100%">
+          Grow influence of your group chat
+        </div>
+    </div>
+  
+    <div class="column is-4 is-flex">
+        <div class="has-text-centered box" style="width:100%">
+          Backup chat history
+        </div>
+    </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="hero is-medium" style="background-color:white;">
+    <div class="hero-body">
+      <div class="container has-text-centered" style="max-width:900px">
+        <div class="columns is-vcentered">
+          <div class="column is-5" >
+            <p class="title is-6 has-text-centered" style="color: white; -webkit-filter: invert(100%); filter: invert(100%);"> Save chat history </p>
+          </div>
+          <div class="column">
+            <a href="https://wewe.t9t.io/groups">
+              <img src="https://raw.githubusercontent.com/timqian/images/master/20190723123506.png" alt="groups" style="max-height:20rem; border-radius: 5px; box-shadow: 0px 0px 10px rgba(10,10,10,.1); "/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero is-medium" style="background-color:black;">
+    <div class="hero-body">
+      <div class="container has-text-centered" style="max-width:900px">
+        <div class="columns is-vcentered">
+          <div class="column is-5" >
+            <p class="title is-6 has-text-centered" style="color: black; -webkit-filter: invert(100%); filter: invert(100%);"> Extract topics by hand or automatically </p>
+          </div>
+          <div class="column">
+            <a href="https://wewe.t9t.io/groups">
+              <img src="https://raw.githubusercontent.com/timqian/images/master/20190723113817.png" alt="groups" style="max-height:20rem; border-radius: 5px; box-shadow: 0px 0px 10px rgba(10,10,10,.1); "/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero is-medium" style="background-color:white;">
+    <div class="hero-body">
+      <div class="container has-text-centered" style="max-width:900px">
+        <div class="columns is-vcentered">
+          <div class="column is-5" >
+            <p class="title is-6 has-text-centered" style="color: white; -webkit-filter: invert(100%); filter: invert(100%);"> Content accessable to search engine </p>
+          </div>
+          <div class="column">
+            <a href="https://wewe.t9t.io/groups">
+              <img src="https://raw.githubusercontent.com/timqian/images/master/20190723115409.png" alt="groups" style="max-height:20rem; border-radius: 5px; box-shadow: 0px 0px 10px rgba(10,10,10,.1); "/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero is-medium" style="background-color:black;">
+    <div class="hero-body">
+      <div class="container has-text-centered" style="max-width:900px">
+        <div class="columns is-vcentered">
+          <div class="column is-5" >
+            <p class="title is-6 has-text-centered" style="color: black; -webkit-filter: invert(100%); filter: invert(100%);"> Support different kinds of chat tools like slack, wechat, and more to come </p>
+          </div>
+          <div class="column">
+            <a href="https://wewe.t9t.io/groups">
+              <img src="https://raw.githubusercontent.com/timqian/images/master/20190720212424.png" alt="groups" style="max-height:20rem; border-radius: 5px; box-shadow: 0px 0px 10px rgba(10,10,10,.1); "/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero is-medium" style="background-color:white;">
+    <div class="hero-body">
+      <div class="container has-text-centered" style="max-width:900px">
+        <div class="columns is-vcentered">
+          <div class="column is-5" >
+            <p class="title is-6 has-text-centered" style="color: white; -webkit-filter: invert(100%); filter: invert(100%);"> Trusted by many open minded communities </p>
+          </div>
+          <div class="column">
+            <a href="https://wewe.t9t.io/groups">
+              <img src="https://raw.githubusercontent.com/timqian/images/master/20190723093421.png" alt="groups" style="max-height:20rem; border-radius: 5px; box-shadow: 0px 0px 10px rgba(10,10,10,.1); "/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container" style="max-width:900px">
+      <div class="has-text-centered">
+        <a class="button is-dark is-rounded is-outlined" href="https://wewe.t9t.io/groups">View groups</a>
+        <a class="button is-dark is-rounded" href="https://wewe.t9t.io/join">Join wewe</a>
+      </div>
+    </div>
+  </div>
+    <footer class="footer" style="color:lemonchiffon; background-color:black">
+      <div class="container"  style="max-width:900px">
+        <div class="content has-text-centered">
+            <a href="https://github.com/timqian">
+              <i class="fab fa-github-alt fa-2x" style="color:lemonchiffon; margin:5px;" ></i>
+            </a>
+            <a href="https://twitter.com/tim_qian">
+              <i class="fab fa-twitter fa-2x" style="color:lemonchiffon; margin:5px;"></i>
+            </a>
+            <a href="https://join.slack.com/t/t9tio/shared_invite/enQtNjgzMzkwMDM0NTE3LTE5ZTUzYjU4Y2I0YzRiZjNkYTkzMzE1ZmM0NDdmYzRlZmMxNGY1MzZlN2EwYjYyNWVlMWY0Nzk2MDBhNWZlY2I">
+              <i class="fab fa-slack fa-2x" style="color:lemonchiffon; margin:5px;"></i>
+            </a>
+            <a href="https://raw.githubusercontent.com/timqian/images/master/3811553342733_.pic.jpg">
+              <i class="fab fa-weixin fa-2x" style="color:lemonchiffon; margin:5px;"></i>
+            </a>
+            <a href="mailto:timqian92@qq.com">
+              <i class="fas fa-envelope fa-2x" style="color:lemonchiffon; margin:5px;"></i>
+            </a>
+          <p>
+            A <a href="https://t9t.io">t9t</a> project build by <a href="https://twitter.com/tim_qian">timqian</a>.
+            <br />
+          </p>
+        </div>
+      </div>
+    </footer>
+  <body>
+
+</html>

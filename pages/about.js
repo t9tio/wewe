@@ -31,7 +31,7 @@ const Index = () => (
             Search engine friendly
           </li>
           <li>
-            Aggregate Topics
+            Extract topics from message history
           </li>
         </ul>
 

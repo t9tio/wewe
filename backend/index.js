@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const next = require('next');
@@ -28,6 +29,10 @@ nextApp.prepare().then(() => {
   app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
   app.get('/', async (req, res) => {
+    res.sendFile(path.join(__dirname, '../index.html'));
+  });
+
+  app.get('/groups', async (req, res) => {
     const groups = await Group.getAll();
     nextApp.render(req, res, '/index', { groups });
   });

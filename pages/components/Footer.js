@@ -6,10 +6,10 @@ function Footer() {
       <div className="container">
         <div className="content has-text-centered">
           <div className="soc">
-            <a href="https://github.com/t9tio">
+            <a href="https://github.com/timqian">
               <i className="fab fa-github-alt fa-2x" />
             </a>
-            <a href="https://twitter.com/t9tio">
+            <a href="https://twitter.com/tim_qian">
               <i className="fab fa-twitter fa-2x" />
             </a>
 
