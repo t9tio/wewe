@@ -10,8 +10,6 @@ import ChatHero from './components/ChatHero';
 import AdCard from './components/AdCard';
 import validator from '../services/validator';
 
-
-
 const MemberList = ({ members }) => members.sort((a, b) => a.date - b.date).map(member => (
   <div className="media members-media">
     <div className="media-content">

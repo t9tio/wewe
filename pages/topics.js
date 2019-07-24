@@ -15,17 +15,13 @@ const TopicList = ({ topics, groupName }) => topics.map(topic => (
         <a href={`/chat/${groupName}/topic/${topic.id}`}><strong>{topic.title}</strong></a>
         <br />
         <small>
-          collected
           {' '}
           {format(Number(topic.date))}
           {' '}
-          by
-          {' '}
-          {topic.from}
         </small>
       </div>
     </div>
-    {topic.msgRange
+    {/* {topic.msgRange
       ? (
         <div className="media-right">
           <a href={`/chat/${groupName}/topic/${topic.id}`}>
@@ -36,7 +32,7 @@ const TopicList = ({ topics, groupName }) => topics.map(topic => (
           </a>
         </div>
       )
-      : ''}
+      : ''} */}
   </div>
 
 ));

@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import axios from 'axios';
 import Head from './components/Head';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -14,22 +16,67 @@ const Index = (props) => {
     group, msgs, totalPageCount, currentPage,
   } = props;
 
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [topicTitle, setTopicTitle] = useState('');
+  const [topicDesc, setTopicDesc] = useState('');
+  const [password, setPassword] = useState('');
+  const [topicMsg, setTopicMsg] = useState({});
+
+  const addTopic = async () => {
+    await axios.post('/api/topics/add', {
+      groupName: group.name,
+      from: topicMsg.from,
+      title: topicTitle,
+      date: topicMsg.date,
+      msgRange: [topicMsg.id],
+      description: topicDesc || undefined,
+      type: 'wechat',
+      password,
+    });
+
+    window.location.href = `/chat/${group.name}/topics`;
+  };
+
+
   const Msgs = () => {
     if (group.type === 'wechat') {
       return (
         <div className="msg-container">
           {
             msgs.map(msg => (
-              <WechatMsg
-                id={msg.id}
-                text={msg.text}
-                from={msg.from}
-                date={msg.date}
-                link={msg.link}
-                type={msg.type}
-                isKnownMember={msg.isKnownMember}
-                groupName={group.name}
-              />
+              <div>
+                <div className="is-pulled-right dropdown is-hoverable is-right">
+                  <a className="dropdown-trigger" href>
+                    ...
+                  </a>
+                  <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div className="dropdown-content">
+                      <a
+                        href
+                        className="dropdown-item"
+                        onClick={() => {
+                          setIsModalVisible(true);
+                          setTopicTitle(msg.text);
+                          setTopicMsg(msg);
+                        }}
+                      >
+                        Add to topics
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <WechatMsg
+                  id={msg.id}
+                  text={msg.text}
+                  from={msg.from}
+                  date={msg.date}
+                  link={msg.link}
+                  type={msg.type}
+                  isKnownMember={msg.isKnownMember}
+                  groupName={group.name}
+                />
+              </div>
             ))
           }
         </div>
@@ -130,6 +177,79 @@ const Index = (props) => {
 
       </div>
       <Footer />
+
+
+      <div className={`modal ${isModalVisible ? 'is-active' : ''}`}>
+        <div className="modal-background" role="presentation" onClick={() => setIsModalVisible(false)} />
+        <div className="modal-content box">
+          <div className="">
+            <p className="title is-5 has-text-centered">
+              This message is the starting point of a valuable topic
+            </p>
+            <hr />
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">Topic title</label>
+              </div>
+              <div className="field-body">
+                <div className="field">
+                  <input className="input is-dark" onChange={e => setTopicTitle(e.target.value)} value={topicTitle} />
+                  <p className="help has-text-grey-light">
+                    (Required) This message will be the title of the topic if not filled
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">Description</label>
+              </div>
+              <div className="field-body">
+                <div className="field">
+                  <textarea className="input" onChange={e => setTopicDesc(e.target.value)} />
+                  <p className="help has-text-grey-light">
+                    (Optional)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">Password</label>
+              </div>
+              <div className="field-body">
+                <div className="field is-narrow">
+                  <input className="input is-dark" type="password" onChange={e => setPassword(e.target.value)} />
+                  <p className="help has-text-grey-light">
+                    (Required) Used to validate your identity
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="field is-horizontal">
+              <div className="field-label">
+              &nbsp;
+              </div>
+              <div className="field-body">
+                <div className="field">
+                  <div className="control">
+                    <button className="button is-success" type="button" onClick={addTopic}>
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" className="modal-close is-large" aria-label="close" onClick={() => setIsModalVisible(false)} />
+      </div>
     </div>
   );
 };

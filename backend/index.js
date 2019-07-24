@@ -162,8 +162,9 @@ nextApp.prepare().then(() => {
       let msgs = await Msg.getRange({
         groupName,
         idOffset: topic.msgRange[0],
-        idLimit: topic.msgRange[1] - topic.msgRange[0],
+        idLimit: 50,
       });
+
       // potential bug: more than 100 member of a group
       const members = await GroupMember.getAllMemberNames({
         groupName,
@@ -236,6 +237,34 @@ nextApp.prepare().then(() => {
       date,
     });
 
+    res.json('ok');
+  });
+
+  app.post('/api/topics/add', async (req, res) => {
+    const {
+      groupName,
+      from,
+      title,
+      date,
+      msgRange,
+      description,
+      type,
+      password,
+    } = req.body;
+
+    if (password !== secret.topicPassword) {
+      res.status(400).json('Wrong password');
+    }
+
+    await Topics.add({
+      groupName,
+      from,
+      title,
+      date,
+      msgRange,
+      description: description || undefined,
+      type,
+    });
     res.json('ok');
   });
 
