@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="has-navbar-fixed-top">
   
   <head>
     <meta charset="UTF-8" />
@@ -22,6 +22,8 @@
       gtag('config', 'UA-56506279-9');
     </script>
     <script src="https://embed.small.chat/TKSPMPXU1GLJ4NEWQ5.js" async ></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+
   </head>
 
   
@@ -97,8 +99,20 @@
 
           </h1>
           <h2 class="subtitle is-4 has-text-centered">
-            Open group chat to the world   
+            Open <span class="typedEl"></span>group to the world   
           </h2>
+          <script>
+            var options = {
+              strings: ["slack", "wechat", "telegram"],
+              typeSpeed: 40,
+              fadeOut: true,
+              shuffle: true,
+              loop: true,
+              loopCount: Infinity,
+            }
+
+            var typed = new Typed(".typedEl", options);
+          </script>
           <div class="has-text-centered">
             <a href="https://wewe.t9t.io"><img src="https://raw.githubusercontent.com/timqian/images/master/20190723115805.png" alt="wewe" style="max-height:10rem"></a>
           </div>
