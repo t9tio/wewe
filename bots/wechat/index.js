@@ -2,6 +2,8 @@ const { Wechaty } = require('wechaty');
 const qrcodeTerminal = require('qrcode-terminal');
 const MsgDao = require('../../db/Msg');
 const GroupDao = require('../../db/Group');
+const TopicDao = require('../../db/Topics');
+
 const s3 = require('../services/s3');
 
 GroupDao.getAll().then(async (groups) => {
@@ -65,9 +67,19 @@ GroupDao.getAll().then(async (groups) => {
             console.log('msg saved to db', groupName, recalledMsg.text(), recalledMsg.from().name(), type);
           } else {
             const text = await message.text();
-            await MsgDao.addMsgOfGroup({
+            const msgId = await MsgDao.addMsgOfGroup({
               groupName, text, from, date, type,
             });
+            if (text.includes('#topic')) {
+              await TopicDao.add({
+                groupName,
+                from,
+                title: text,
+                date,
+                msgRange: [msgId],
+                type:'wechat',
+              });
+            }
             console.log('msg saved to db', groupName, text, from, date, type);
           }
         }

@@ -59,12 +59,15 @@ async function addMsgOfGroup({
   const msgCount = await Group.incMsgCount({
     name: groupName,
   });
+
   await docClient.put({
     TableName: 'wewe-msg',
     Item: {
       groupName, text, from, date, type, link, id: msgCount - 1,
     },
   }).promise();
+
+  return msgCount -1; // msg id
 }
 
 /**
