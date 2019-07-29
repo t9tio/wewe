@@ -1,8 +1,23 @@
-# wewe
+[![](https://raw.githubusercontent.com/timqian/images/master/20190704122816.png)](https://wewe.t9t.io)
+
+# [wewe](https://wewe.t9t.io)
+
+Open group chat messages to the world
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg)](https://github.com/chatie/wechaty)
 
-Open group chat messages to the world
+## Core values of wewe
+
+- Open group chat to the internet
+- Search engine friendly
+- Extract topics from message history
+
+## Tech stacks
+
+- language: js nodejs
+- database: dynamodb
+- frontend framework: react
+- deployment: aws lambda; apex/up
 
 ## Develop
 
