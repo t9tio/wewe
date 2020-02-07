@@ -198,6 +198,45 @@ nextApp.prepare().then(() => {
   });
 
   // APIs
+
+  app.get('/api/chat/:name', async (req, res) => {
+    const { name } = req.params;
+    const { page } = req.query;
+
+    const group = await Group.get({ name });
+    if (!group) {
+      res.status(404);
+      return;
+    }
+
+    const totalPageCount = Math.ceil(group.msgCount / pageMsgCount);
+    const currentPage = Number(page) >= 0 ? Number(page) : totalPageCount;
+    let msgs = await Msg.getRange({
+      groupName: name,
+      idOffset: (currentPage - 1) * pageMsgCount,
+      idLimit: pageMsgCount,
+    });
+
+    msgs = removeRecalledMsgs(msgs);
+
+    // potential bug: more than 100 member of a group
+    const members = await GroupMember.getAllMemberNames({
+      groupName: name,
+    });
+
+    // console.log(members);
+    msgs = msgs.map((msg) => {
+      if (members.includes(msg.from)) {
+        msg.isKnownMember = true;
+      }
+      return msg;
+    });
+
+    res.json({
+      msgs, totalPageCount, currentPage,
+    });
+  });
+
   app.post('/groupmember/add', async (req, res) => {
     const {
       groupName,
