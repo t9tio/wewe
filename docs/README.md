@@ -1,6 +1,10 @@
 # API doc
 
-## Get group info and latest 50 messages
+## Get chat messages
+
+- Examples(just click the links)
+  - Get Latest 50 msgs: https://wewe.t9t.io/api/chat/t9t.io%20community%202
+  - Get first page of msgs: https://wewe.t9t.io/api/chat/t9t.io%20community%202?page=1
 
 - Url: `/api/chat/:name`
 - Method: `Get`
@@ -19,6 +23,3 @@
   }
   ```
 
-- Examples
-  - Get Latest 50 msgs: https://wewe.t9t.io/api/chat/t9t.io%20community%202
-  - Get first page of msgs: https://wewe.t9t.io/api/chat/t9t.io%20community%202?page=1
