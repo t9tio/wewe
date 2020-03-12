@@ -1,30 +1,41 @@
 const { Wechaty } = require('wechaty');
+const { PuppetPadplus } = require('wechaty-puppet-padplus');
 const qrcodeTerminal = require('qrcode-terminal');
 const MsgDao = require('../../db/Msg');
 const GroupDao = require('../../db/Group');
 const TopicDao = require('../../db/Topics');
+const secret = require('../../secret.json');
 
 const s3 = require('../services/s3');
+
+const puppet = new PuppetPadplus({
+  token: secret.wechatyToken,
+});
 
 GroupDao.getAll().then(async (groups) => {
   const knownGroups = groups.map(group => group.name);
   console.log(knownGroups);
 
-  const bot = Wechaty.instance();
+  const bot = new Wechaty({
+    name: 'wewe-wechat-bot',
+    puppet,
+  });
 
   bot.start();
 
-  bot.on('scan', (url, status) => {
-    const loginUrl = url.replace(/\/qrcode\//, '/l/');
-    qrcodeTerminal.generate(loginUrl);
-    console.log(status);
-  });
+  bot
+    .on('scan', (qrcode, status) => {
+      qrcodeTerminal.generate(qrcode, {
+        small: true,
+      });
+      console.log(status);
+    });
 
   bot.on('login', user => console.log(`User ${user} logined`));
 
   bot.on('message', async (message) => {
     try {
-    // console.log(`Message: ${message}`);
+      // console.log(`Message: ${message}`);
       const room = await message.room();
 
       if (room) {
@@ -77,7 +88,7 @@ GroupDao.getAll().then(async (groups) => {
                 title: text,
                 date,
                 msgRange: [msgId],
-                type:'wechat',
+                type: 'wechat',
               });
             }
             console.log('msg saved to db', groupName, text, from, date, type);
