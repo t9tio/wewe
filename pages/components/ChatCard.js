@@ -2,10 +2,13 @@ import './ChatCard.scss';
 import { abbreviateNumber } from '../utils';
 
 const ChatCard = ({
-  name, logoUrl, description, userCount, type, msgCount, topicCount,
+  name, logoUrl, description = '', userCount, type, msgCount, topicCount,
 }) => {
   let iconClass = 'fab fa-weixin';
   if (type === 'slack') iconClass = 'fab fa-slack';
+
+  const groupDesc = description.split('||')[0];
+  const link = description.split('||')[1];
 
   return (
     <div className="box group-box">
@@ -19,7 +22,13 @@ const ChatCard = ({
           <div className="content">
             <a href={`/chat/${name}`}><strong>{name}</strong></a>
             <p>
-              {description}
+              {groupDesc}
+              &nbsp;
+              {
+                link
+                  ? <a href={link}>更多介绍</a>
+                  : ''
+              }
             </p>
           </div>
           <nav className="chatcard-status-nav level is-mobile">

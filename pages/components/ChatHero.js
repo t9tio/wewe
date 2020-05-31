@@ -3,13 +3,15 @@ import './ChatHero.scss';
 function ChatHero({
   group: {
     name: groupName,
-    description: groupDesc,
+    description = '',
     type: groupType,
   },
 }) {
   let iconClass = 'fab fa-weixin';
   if (groupType === 'slack') iconClass = 'fab fa-slack';
 
+  const groupDesc = description.split('||')[0];
+  const link = description.split('||')[1];
   return (
     <div>
 
@@ -23,6 +25,12 @@ function ChatHero({
         </p>
         <p className="subtitle is-6">
           {groupDesc}
+          &nbsp;
+          {
+            link
+              ? <a href={link}>更多介绍</a>
+              : ''
+          }
         </p>
       </div>
 

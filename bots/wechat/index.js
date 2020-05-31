@@ -23,6 +23,7 @@ GroupDao.getAll().then(async (groups) => {
 
   bot.start();
 
+  // console.log(bot.Message.Type)
   bot
     .on('scan', (qrcode, status) => {
       qrcodeTerminal.generate(qrcode, {

@@ -28,31 +28,31 @@ const Msg = ({
         {fixedText}
       </Linkify>
     );
-  } else if (type === 13) {
-    // video
-    msgDiv = (
-      <video controls className="chat-msg-video">
-        <source src={link} />
-        Your browser does not support HTML5 video.
-      </video>
-    );
-  } else if (type === 1) {
-    // shared link
-    try {
-      const rx = /url&gt;(http.*?)&lt;/gi;
-      const fixedText = rx.exec(text)[1];
-      msgDiv = (
-        <Linkify className="chat-message">
-          {fixedText}
-        </Linkify>
-      );
-    } catch (error) {
-      msgDiv = (
-        <Linkify className="chat-message">
-          [Unsupported msg]
-        </Linkify>
-      );
-    }
+  // } else if (type === 14) {
+  //   // video
+  //   msgDiv = (
+  //     <video controls className="chat-msg-video">
+  //       <source src={link} />
+  //       Your browser does not support HTML5 video.
+  //     </video>
+  //   );
+  // } else if (type === 13) {
+  //   // shared link
+  //   try {
+  //     const rx = /url&gt;(http.*?)&lt;/gi;
+  //     const fixedText = rx.exec(text)[1];
+  //     msgDiv = (
+  //       <Linkify className="chat-message">
+  //         {fixedText}
+  //       </Linkify>
+  //     );
+    // } catch (error) {
+    //   msgDiv = (
+    //     <Linkify className="chat-message">
+    //       [Unsupported msg]
+    //     </Linkify>
+    //   );
+    // }
   } else if (type === 6) {
     // img
     msgDiv = (

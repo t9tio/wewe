@@ -67,3 +67,7 @@ ctrl+b d
 refs:
 - [tmux cheat sheet](https://github.com/timqian/my-notes/issues/191)
 - [wechaty on Ubuntu](https://github.com/Chatie/wechaty/issues/1515#issuecomment-503364700)
+
+## Change log
+wechaty updated its type code
+video: 14; link: 13...
