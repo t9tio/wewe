@@ -43,7 +43,7 @@
     "react-dom": "^16.8.6",
     "react-paginate": "^6.3.0",
     "timeago.js": "^4.0.0-beta.2",
-    "validator": "^11.0.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
