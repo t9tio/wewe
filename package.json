@@ -35,7 +35,7 @@
     "express": "^4.17.1",
     "linkifyjs": "^2.1.8",
     "lodash.chunk": "^4.2.0",
-    "nanoid": "^2.0.3",
+    "nanoid": "^3.1.31",
     "next": "^8.1.0",
     "node-sass": "^4.12.0",
     "qs": "^6.7.0",
