@@ -37,7 +37,7 @@
     "lodash.chunk": "^4.2.0",
     "nanoid": "^2.0.3",
     "next": "^8.1.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "qs": "^6.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
